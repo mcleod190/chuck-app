@@ -11,10 +11,13 @@ ENV RAILS_ENV="production" \
     RAILS_SERVE_STATIC_FILES="true" \
     SECRET_KEY_BASE="96f9c9b5d4b8e23f1a0e8d7c6b5a4f3e2d1c0b9a8f7e6d5c4b3a2f1e0d9c8b7a"
 
-RUN apk add --no-cache build-base postgresql-dev tzdata bash curl libpq
+RUN apk add --no-cache tzdata bash curl libpq
 
 COPY Gemfile Gemfile.lock ./
-RUN bundle install
+
+RUN apk add --no-cache --virtual .build-deps build-base && \
+    bundle install && \
+    apk del .build-deps
 
 COPY . .
 
@@ -28,6 +31,7 @@ ENTRYPOINT ["/rails/bin/docker-entrypoint"]
 
 EXPOSE 3000
 CMD ["./bin/rails", "server"]
+
 
 
 
