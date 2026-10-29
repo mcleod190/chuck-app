@@ -91,14 +91,20 @@
             </div>
           </div>
 
-          <div class="bg-slate-950 border-l-4 border-amber-500 p-4 rounded-r-2xl min-h-[100px] flex flex-col justify-between" id="blessing-box">
-            <p id="blessing-text" class="text-sm text-slate-200 italic leading-relaxed">
-              "<%= @random_blessing %>"
-            </p>
-            <div class="mt-2 text-right text-xs font-bold text-amber-400" id="blessing-signature">
-              — Chuck Norris
+          <div class="bg-slate-950 border-l-4 border-amber-500 p-4 rounded-r-2xl min-h-[100px] flex items-center gap-4" id="blessing-box">
+            <div class="w-16 h-16 rounded-full overflow-hidden flex-shrink-0 border-2 border-amber-500 shadow-md">
+              <%= image_tag "chuck/walker_hat_real.jpg", alt: "Chuck Norris Blessing", class: "w-full h-full object-cover" %>
+            </div>
+            <div class="flex-grow">
+              <p id="blessing-text" class="text-sm text-slate-200 italic leading-relaxed">
+                "<%= @random_blessing %>"
+              </p>
+              <div class="mt-2 text-right text-xs font-bold text-amber-400" id="blessing-signature">
+                — Chuck Norris
+              </div>
             </div>
           </div>
+
         </div>
 
         <div class="mt-5 pt-4 border-t border-slate-800 flex items-center justify-between">

@@ -1,19 +1,44 @@
 <!-- Hero & Randomizer Section -->
-<section class="relative overflow-hidden pt-12 pb-16 lg:pt-20 lg:pb-24 border-b border-slate-800/80">
-  <div class="absolute inset-0 bg-radial-gradient pointer-events-none"></div>
-  
+<section class="relative overflow-hidden pt-8 pb-14 border-b border-slate-800">
   <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-    <div class="text-center max-w-3xl mx-auto mb-12">
-      <div class="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-amber-500/10 border border-amber-500/30 text-amber-400 text-xs font-black uppercase tracking-widest mb-4">
-        <i class="fa-solid fa-bolt"></i> 100% Certified Indestructible Lore
+    <div class="flex flex-col lg:flex-row items-center justify-between gap-8 mb-10">
+      <div class="max-w-2xl text-center lg:text-left">
+        <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-amber-500/10 border border-amber-500/30 text-amber-400 text-xs font-black uppercase mb-3">
+          <i class="fa-solid fa-certificate"></i> Certified Authentic Chuck Lore
+        </div>
+        <h1 class="font-bebas text-5xl sm:text-7xl lg:text-8xl tracking-wider text-white leading-none mb-3">
+          CHUCK NORRIS <span class="text-transparent bg-clip-text bg-gradient-to-r from-amber-400 via-amber-500 to-red-500">CANNOT BE BEATEN</span>
+        </h1>
+        <p class="text-slate-300 text-sm sm:text-base leading-relaxed mb-5">
+          The ultimate collection of authentic Chuck Norris jokes, iconic movie meme scenes, and daily personal blessings to make you invincible today.
+        </p>
+        <div class="flex flex-wrap items-center justify-center lg:justify-start gap-3">
+          <a href="#daily-joke" class="bg-gradient-to-r from-amber-500 to-amber-600 hover:from-amber-400 text-slate-950 px-5 py-2.5 rounded-xl font-black uppercase text-xs shadow-lg transition-all flex items-center gap-2">
+            <i class="fa-solid fa-fire"></i> Today's Joke & Blessing
+          </a>
+          <a href="#meme-gallery" class="bg-slate-900 hover:bg-slate-800 text-slate-200 border border-slate-700 px-5 py-2.5 rounded-xl font-bold uppercase text-xs transition-all flex items-center gap-2">
+            <i class="fa-solid fa-film text-amber-400"></i> Movie Memes
+          </a>
+        </div>
       </div>
-      <h1 class="font-bebas text-5xl sm:text-7xl lg:text-8xl tracking-wider text-white leading-none mb-4">
-        CHUCK NORRIS <span class="text-transparent bg-clip-text bg-gradient-to-r from-amber-400 via-amber-500 to-red-500">CANNOT BE BEATEN</span>
-      </h1>
-      <p class="text-slate-300 text-base sm:text-lg max-w-2xl mx-auto leading-relaxed">
-        The definitive collection of legendary Chuck Norris facts, iconic movie meme scenes, and daily personal blessings to supercharge your day.
-      </p>
+
+      <!-- Real Chuck Norris Photo Card -->
+      <div class="relative group flex-shrink-0">
+        <div class="absolute -inset-1 bg-gradient-to-r from-amber-500 via-red-500 to-amber-500 rounded-3xl blur opacity-40 group-hover:opacity-75 transition duration-500"></div>
+        <div class="relative w-64 h-80 rounded-2xl overflow-hidden border-2 border-amber-500/50 bg-slate-950 shadow-2xl">
+          <%= image_tag "chuck/chuck_hero.jpg", alt: "Chuck Norris", class: "w-full h-full object-cover object-top filter brightness-105 group-hover:scale-105 transition-transform duration-500" %>
+          <div class="absolute inset-0 bg-gradient-to-t from-slate-950 via-slate-950/20 to-transparent"></div>
+          <div class="absolute bottom-3 left-3 right-3 text-center">
+            <div class="inline-block bg-amber-500 text-slate-950 text-[10px] font-black uppercase px-2 py-0.5 rounded-full mb-1">
+              THE LIVING LEGEND
+            </div>
+            <div class="font-bebas text-xl text-white tracking-wider">CARLOS RAY "CHUCK" NORRIS</div>
+            <div class="text-[11px] text-amber-300 italic font-medium">"I don't sleep. I wait."</div>
+          </div>
+        </div>
+      </div>
     </div>
+
 
     <!-- Interactive Roundhouse Randomizer Card -->
     <div class="max-w-4xl mx-auto bg-slate-900/90 border-2 border-amber-500/50 rounded-3xl p-6 sm:p-8 shadow-2xl relative overflow-hidden" id="random-card-wrapper">

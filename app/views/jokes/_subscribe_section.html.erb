@@ -3,12 +3,18 @@
   <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
     <div class="bg-gradient-to-br from-slate-900 via-slate-900 to-amber-950/40 border-2 border-amber-500 rounded-3xl p-8 sm:p-12 shadow-2xl relative">
       <div class="text-center max-w-2xl mx-auto mb-8">
-        <div class="w-14 h-14 mx-auto rounded-2xl bg-amber-500 text-slate-950 flex items-center justify-center text-2xl font-black shadow-lg shadow-amber-500/30 mb-4">
-          <i class="fa-solid fa-envelope-open-text"></i>
+        <div class="relative w-20 h-20 mx-auto mb-4">
+          <div class="w-20 h-20 rounded-full overflow-hidden border-2 border-amber-500 shadow-xl shadow-amber-500/20">
+            <%= image_tag "chuck/chuck_portrait.jpg", alt: "Chuck Norris", class: "w-full h-full object-cover object-top" %>
+          </div>
+          <div class="absolute -bottom-1 -right-1 w-7 h-7 rounded-full bg-amber-500 text-slate-950 flex items-center justify-center text-xs font-black shadow">
+            <i class="fa-solid fa-envelope"></i>
+          </div>
         </div>
         <h2 class="font-bebas text-4xl sm:text-5xl tracking-wider text-white mb-2">
           JOIN CHUCK'S DAILY BLESSINGS
         </h2>
+
         <p class="text-slate-300 text-sm sm:text-base">
           Receive today's sharpest Chuck Norris joke, an authentic personal blessing, and a fearless wish for a victorious day delivered directly to your inbox every morning.
         </p>

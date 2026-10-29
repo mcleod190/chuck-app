@@ -3,7 +3,13 @@ module ApplicationHelper
     classes = options[:class] || "w-full h-auto object-cover rounded-lg"
     
     if joke.image_url.present?
-      image_tag "scenes/#{joke.image_url}", alt: joke.movie_title, class: classes, **options.except(:class)
+      if joke.image_url.start_with?("chuck/")
+        image_tag joke.image_url, alt: joke.movie_title, class: classes, **options.except(:class)
+      elsif joke.image_url.start_with?("scenes/")
+        image_tag joke.image_url, alt: joke.movie_title, class: classes, **options.except(:class)
+      else
+        image_tag "scenes/#{joke.image_url}", alt: joke.movie_title, class: classes, **options.except(:class)
+      end
     else
       content_tag :div, class: "flex items-center justify-center bg-slate-900 border border-amber-500/30 rounded-lg p-6 text-center text-amber-300" do
         content_tag(:span, "🥋 #{joke.movie_title}")
@@ -30,4 +36,5 @@ module ApplicationHelper
     end
   end
 end
+
 
