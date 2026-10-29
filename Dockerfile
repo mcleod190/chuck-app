@@ -1,6 +1,6 @@
 # syntax = docker/dockerfile:1
 
-ARG RUBY_VERSION=3.0.7-slim
+ARG RUBY_VERSION=3.2-alpine
 FROM registry.docker.com/library/ruby:$RUBY_VERSION
 
 WORKDIR /rails
@@ -8,23 +8,27 @@ WORKDIR /rails
 ENV RAILS_ENV="production" \
     BUNDLE_PATH="/usr/local/bundle" \
     BUNDLE_WITHOUT="development:test" \
+    BUNDLE_JOBS="1" \
+    MAKEFLAGS="-j1" \
+    CFLAGS="-O0 -g0" \
+    CXXFLAGS="-O0 -g0" \
     RAILS_SERVE_STATIC_FILES="true" \
     SECRET_KEY_BASE="96f9c9b5d4b8e23f1a0e8d7c6b5a4f3e2d1c0b9a8f7e6d5c4b3a2f1e0d9c8b7a"
 
-RUN echo "deb http://archive.debian.org/debian bullseye main" > /etc/apt/sources.list && \
-    echo "deb http://archive.debian.org/debian-security bullseye-security main" >> /etc/apt/sources.list && \
-    apt-get update -o Acquire::Check-Valid-Until=false && \
-    apt-get install --no-install-recommends -y gcc make libpq-dev curl libpq5 && \
-    rm -rf /var/lib/apt/lists/*
+RUN apk add --no-cache tzdata bash curl libpq
 
 COPY Gemfile Gemfile.lock ./
-RUN bundle install
+
+RUN apk add --no-cache --virtual .build-deps make gcc musl-dev && \
+    bundle config set --local without 'development test' && \
+    bundle install --jobs=1 && \
+    apk del .build-deps
 
 COPY . .
 
 RUN SECRET_KEY_BASE_DUMMY=1 ./bin/rails assets:precompile
 
-RUN useradd -u 1000 rails --create-home --shell /bin/bash && \
+RUN adduser -D -u 1000 rails && \
     chown -R 1000:1000 db log storage tmp
 USER 1000
 
@@ -32,6 +36,7 @@ ENTRYPOINT ["/rails/bin/docker-entrypoint"]
 
 EXPOSE 3000
 CMD ["./bin/rails", "server"]
+
 
 
 
