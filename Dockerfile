@@ -1,6 +1,6 @@
 # syntax = docker/dockerfile:1
 
-ARG RUBY_VERSION=3.0.7
+ARG RUBY_VERSION=3.2-slim
 FROM registry.docker.com/library/ruby:$RUBY_VERSION
 
 WORKDIR /rails
@@ -10,6 +10,10 @@ ENV RAILS_ENV="production" \
     BUNDLE_WITHOUT="development:test" \
     RAILS_SERVE_STATIC_FILES="true" \
     SECRET_KEY_BASE="96f9c9b5d4b8e23f1a0e8d7c6b5a4f3e2d1c0b9a8f7e6d5c4b3a2f1e0d9c8b7a"
+
+RUN apt-get update && \
+    apt-get install --no-install-recommends -y gcc make libc6-dev libpq5 curl && \
+    rm -rf /var/lib/apt/lists/*
 
 COPY Gemfile Gemfile.lock ./
 RUN bundle config set --local without 'development test' && \
@@ -27,6 +31,7 @@ ENTRYPOINT ["/rails/bin/docker-entrypoint"]
 
 EXPOSE 3000
 CMD ["./bin/rails", "server"]
+
 
 
 
