@@ -1,6 +1,6 @@
 # syntax = docker/dockerfile:1
 
-FROM registry.docker.com/library/ruby:3.2
+FROM registry.docker.com/library/ruby:3.2-slim-bookworm
 
 WORKDIR /rails
 
@@ -24,6 +24,7 @@ ENTRYPOINT ["/rails/bin/docker-entrypoint"]
 
 EXPOSE 3000
 CMD ["./bin/rails", "server", "-b", "0.0.0.0", "-p", "3000", "-u", "webrick"]
+
 
 
 
