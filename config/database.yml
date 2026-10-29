@@ -21,10 +21,11 @@ production:
   <% if ENV["DATABASE_URL"].present? %>
   url: <%= ENV["DATABASE_URL"] %>
   <% else %>
-  database: <%= ENV.fetch("POSTGRES_DB", "chuck_norris_production") %>
-  username: <%= ENV.fetch("POSTGRES_USER", "postgres") %>
-  password: <%= ENV.fetch("POSTGRES_PASSWORD", "") %>
-  host: <%= ENV.fetch("POSTGRES_HOST", "localhost") %>
-  port: <%= ENV.fetch("POSTGRES_PORT", 5432) %>
+  database: <%= ENV["DB_dbname"] || ENV.fetch("POSTGRES_DB", "chuck_norris_production") %>
+  username: <%= ENV["DB_username"] || ENV.fetch("POSTGRES_USER", "postgres") %>
+  password: <%= ENV["DB_password"] || ENV.fetch("POSTGRES_PASSWORD", "") %>
+  host: <%= ENV["DB_host"] || ENV.fetch("POSTGRES_HOST", "localhost") %>
+  port: <%= ENV["DB_port"] || ENV.fetch("POSTGRES_PORT", 5432) %>
   <% end %>
+
 
