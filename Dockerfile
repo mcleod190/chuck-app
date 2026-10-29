@@ -16,8 +16,10 @@ RUN apk add --no-cache tzdata bash curl libpq
 COPY Gemfile Gemfile.lock ./
 
 RUN apk add --no-cache --virtual .build-deps make gcc musl-dev && \
+    bundle config set --local without 'development test' && \
     bundle install && \
     apk del .build-deps
+
 
 
 COPY . .
