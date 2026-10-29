@@ -25,8 +25,9 @@ class JokesController < ApplicationController
           movie_title: @joke.movie_title,
           character_name: @joke.character_name,
           scene_description: @joke.scene_description,
-          image_url: helpers.asset_path("scenes/#{@joke.image_url}"),
+          image_url: helpers.asset_path(helpers.scene_image_path(@joke)),
           category: @joke.category,
+
           likes_count: @joke.likes_count
         }
       end

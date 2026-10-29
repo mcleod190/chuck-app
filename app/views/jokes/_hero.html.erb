@@ -46,9 +46,10 @@
         <!-- Scene Image / Visual -->
         <div class="w-full md:w-5/12 aspect-video md:aspect-[4/3] rounded-2xl overflow-hidden bg-slate-950 border border-slate-800 flex-shrink-0">
           <img id="random-img" 
-               src="<%= asset_path("scenes/#{@joke_of_the_day.image_url}") %>" 
+               src="<%= asset_path(scene_image_path(@joke_of_the_day)) %>" 
                alt="<%= @joke_of_the_day.movie_title %>"
                class="w-full h-full object-cover transition-all duration-300">
+
         </div>
 
         <!-- Joke text & controls -->
