@@ -160,9 +160,7 @@ GEM
       racc (~> 1.4)
     nokogiri (1.17.2-x86_64-linux)
       racc (~> 1.4)
-    pg (1.6.3-aarch64-linux)
-    pg (1.6.3-arm64-darwin)
-    pg (1.6.3-x86_64-linux)
+    pg (1.6.3)
     pp (0.6.4)
       prettyprint
     prettyprint (0.2.1)
@@ -267,8 +265,10 @@ GEM
 
 PLATFORMS
   aarch64-linux
+  aarch64-linux-musl
   arm64-darwin-23
   x86_64-linux
+  x86_64-linux-musl
 
 DEPENDENCIES
   bootsnap
