@@ -1,0 +1,21 @@
+CHUCK NORRIS DAILY ROUNDHOUSE
+=============================
+
+Attention, <%= @subscriber.display_name %>!
+
+YOUR BLESSING & GOOD DAY WISH:
+"<%= @blessing %>"
+— Chuck Norris
+
+<% if @joke %>
+JOKE OF THE DAY:
+"<%= @joke.content %>"
+<% if @joke.movie_title.present? %>
+Movie Lore: <%= @joke.movie_title %> (<%= @joke.character_name %>)
+Scene: <%= @joke.scene_description %>
+<% end %>
+<% end %>
+
+Visit the gallery: <%= root_url %>
+
+Unsubscribe: <%= @unsubscribe_url %>

@@ -1,0 +1,70 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 360" width="100%" height="100%">
+  <defs>
+    <linearGradient id="colosseum" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#3b0764"/>
+      <stop offset="60%" stop-color="#831843"/>
+      <stop offset="100%" stop-color="#4c0519"/>
+    </linearGradient>
+  </defs>
+  <rect width="600" height="360" fill="url(#colosseum)"/>
+  
+  <!-- Colosseum Arches in background -->
+  <g fill="#500724" stroke="#f43f5e" stroke-width="2">
+    <rect x="60" y="80" width="50" height="90" rx="25"/>
+    <rect x="140" y="80" width="50" height="90" rx="25"/>
+    <rect x="220" y="80" width="50" height="90" rx="25"/>
+    <rect x="300" y="80" width="50" height="90" rx="25"/>
+    <rect x="380" y="80" width="50" height="90" rx="25"/>
+    <rect x="460" y="80" width="50" height="90" rx="25"/>
+  </g>
+  <rect x="0" y="270" width="600" height="90" fill="#2e021a"/>
+
+  <!-- Tiny Kitten watching referee -->
+  <g transform="translate(290, 245)">
+    <circle cx="10" cy="5" r="9" fill="#fbcfe8"/>
+    <polygon points="4,-2 7,-8 11,-2" fill="#fda4af"/>
+    <polygon points="12,-2 15,-8 18,-2" fill="#fda4af"/>
+    <circle cx="8" cy="5" r="1.5" fill="#000"/>
+    <circle cx="12" cy="5" r="1.5" fill="#000"/>
+    <ellipse cx="10" cy="18" rx="10" ry="8" fill="#fbcfe8"/>
+    <path d="M20,18 Q26,10 24,5" stroke="#fbcfe8" stroke-width="2" fill="none"/>
+  </g>
+
+  <!-- Colt (Chuck Norris) Karate Silhouette - Left -->
+  <g transform="translate(140, 160)">
+    <!-- Karate Stance -->
+    <circle cx="30" cy="10" r="16" fill="#fbbf24"/>
+    <!-- Beard & Hair -->
+    <path d="M18,6 Q30,28 42,6" fill="#92400e"/>
+    <rect x="14" y="26" width="32" height="50" fill="#f8fafc"/>
+    <!-- Arms ready -->
+    <path d="M14,35 L-10,30 L0,15" stroke="#f8fafc" stroke-width="10" stroke-linecap="round" fill="none"/>
+    <path d="M46,35 L75,25 L85,40" stroke="#f8fafc" stroke-width="10" stroke-linecap="round" fill="none"/>
+    <!-- Karate Pants / Legs -->
+    <path d="M18,75 L5,115" stroke="#f8fafc" stroke-width="14" stroke-linecap="round"/>
+    <path d="M42,75 L60,115" stroke="#f8fafc" stroke-width="14" stroke-linecap="round"/>
+    <!-- Black Belt -->
+    <rect x="12" y="52" width="36" height="7" fill="#0f172a"/>
+  </g>
+
+  <!-- Bruce Lee Silhouette - Right Flying Kick -->
+  <g transform="translate(370, 140)">
+    <circle cx="60" cy="30" r="14" fill="#fcd34d"/>
+    <path d="M50,42 L20,60" stroke="#18181b" stroke-width="14" stroke-linecap="round"/>
+    <!-- Flying kick leg -->
+    <path d="M20,60 L-50,55" stroke="#18181b" stroke-width="14" stroke-linecap="round"/>
+    <path d="M20,60 L25,100" stroke="#18181b" stroke-width="14" stroke-linecap="round"/>
+    <!-- Arms -->
+    <path d="M50,45 L75,30" stroke="#fcd34d" stroke-width="8" stroke-linecap="round"/>
+  </g>
+
+  <!-- Clash Spark -->
+  <circle cx="280" cy="195" r="8" fill="#fef08a"/>
+  <line x1="260" y1="195" x2="300" y2="195" stroke="#ffffff" stroke-width="3"/>
+  <line x1="280" y1="175" x2="280" y2="215" stroke="#ffffff" stroke-width="3"/>
+
+  <!-- Badge -->
+  <rect x="20" y="20" width="260" height="42" rx="8" fill="#000000" fill-opacity="0.75" stroke="#fb7185" stroke-width="1.5"/>
+  <text x="35" y="47" font-family="Impact, sans-serif" font-size="18" fill="#fda4af" letter-spacing="1">THE WAY OF THE DRAGON</text>
+  <text x="340" y="335" font-family="Impact, sans-serif" font-size="16" fill="#fbcfe8">ROME, 1972: THE TITANS CLASH</text>
+</svg>

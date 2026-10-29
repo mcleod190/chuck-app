@@ -1,0 +1,23 @@
+CHUCK NORRIS APPROVES
+====================
+Official Daily Roundhouse of Wisdom & Blessing
+
+Hello <%= @subscriber.display_name %>,
+
+You have made the wisest choice of your life: subscribing to the daily blessings of Chuck Norris.
+
+YOUR PERSONAL BLESSING & GOOD DAY WISH:
+"<%= @blessing %>"
+— Chuck Norris
+
+<% if @joke %>
+JOKE OF THE DAY:
+"<%= @joke.content %>"
+<% if @joke.movie_title.present? %>
+(Lore: <%= @joke.movie_title %>)
+<% end %>
+<% end %>
+
+Visit the gallery: <%= root_url %>
+
+Unsubscribe: <%= @unsubscribe_url %>

@@ -1,0 +1,41 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 360" width="100%" height="100%">
+  <defs>
+    <linearGradient id="desert" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#fdba74"/>
+      <stop offset="40%" stop-color="#ea580c"/>
+      <stop offset="100%" stop-color="#7c2d12"/>
+    </linearGradient>
+  </defs>
+  <rect width="600" height="360" fill="url(#desert)"/>
+  
+  <!-- Dirt erupting from the ground -->
+  <path d="M0,260 Q300,200 600,260 L600,360 L0,360 Z" fill="#451a03"/>
+  <path d="M150,280 Q300,100 450,280 Z" fill="#78350f" opacity="0.8"/>
+  <circle cx="260" cy="180" r="40" fill="#a16207" opacity="0.7"/>
+  <circle cx="340" cy="160" r="50" fill="#9a3412" opacity="0.6"/>
+  <circle cx="300" cy="140" r="60" fill="#ca8a04" opacity="0.5"/>
+
+  <!-- Supercharged Ram Truck bursting out at an angle -->
+  <g transform="translate(180, 150) rotate(-15)">
+    <!-- Body -->
+    <rect x="0" y="40" width="220" height="60" rx="6" fill="#1c1917" stroke="#eab308" stroke-width="2"/>
+    <polygon points="120,40 160,0 210,0 220,40" fill="#292524"/>
+    <!-- Supercharger blower scoop -->
+    <polygon points="30,40 40,15 75,15 80,40" fill="#dc2626"/>
+    <ellipse cx="58" cy="18" rx="14" ry="6" fill="#fef08a"/>
+    <!-- Front wheel -->
+    <circle cx="50" cy="100" r="30" fill="#0c0a09" stroke="#78716c" stroke-width="6"/>
+    <!-- Rear wheel -->
+    <circle cx="180" cy="100" r="30" fill="#0c0a09" stroke="#78716c" stroke-width="6"/>
+    <!-- Headlight beam -->
+    <polygon points="0,55 -120,-10 -120,120 0,75" fill="#fef08a" opacity="0.3"/>
+    <!-- McQuade silhouette inside with beer can -->
+    <circle cx="160" cy="20" r="14" fill="#f59e0b"/>
+    <rect x="180" y="10" width="8" height="14" fill="#facc15" stroke="#ffffff" stroke-width="1"/>
+  </g>
+
+  <!-- Title Badge -->
+  <rect x="20" y="20" width="240" height="42" rx="8" fill="#000000" fill-opacity="0.75" stroke="#f59e0b" stroke-width="1.5"/>
+  <text x="35" y="47" font-family="Impact, sans-serif" font-size="18" fill="#fbbf24" letter-spacing="1">LONE WOLF McQUADE</text>
+  <text x="360" y="335" font-family="Impact, sans-serif" font-size="16" fill="#fef08a">DIRT, BEER & SUPERCHARGER</text>
+</svg>

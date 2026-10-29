@@ -1,0 +1,51 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 360" width="100%" height="100%">
+  <defs>
+    <linearGradient id="copbg" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#0f172a"/>
+      <stop offset="50%" stop-color="#1e293b"/>
+      <stop offset="100%" stop-color="#334155"/>
+    </linearGradient>
+  </defs>
+  <rect width="600" height="360" fill="url(#copbg)"/>
+
+  <!-- Flashing police siren lights effect -->
+  <circle cx="150" cy="80" r="70" fill="#3b82f6" opacity="0.3"/>
+  <circle cx="450" cy="80" r="70" fill="#ef4444" opacity="0.3"/>
+
+  <!-- Jake Wilder Silhouette (Chuck) -->
+  <g transform="translate(200, 150)">
+    <circle cx="20" cy="-25" r="20" fill="#d97706"/>
+    <path d="M8,-25 Q20,-6 32,-25" fill="#78350f"/>
+    <!-- Sunglasses -->
+    <rect x="12" y="-30" width="16" height="6" fill="#000000"/>
+    <!-- Police leather bomber jacket -->
+    <rect x="-10" y="0" width="60" height="90" fill="#1e1b4b" rx="4"/>
+    <line x1="20" y1="0" x2="20" y2="90" stroke="#f59e0b" stroke-width="2"/>
+    <!-- Thumbs up -->
+    <circle cx="65" cy="30" r="10" fill="#d97706"/>
+    <rect x="62" y="15" width="8" height="15" fill="#d97706" rx="4"/>
+  </g>
+
+  <!-- Police Dog (Reno) silhouette with sunglasses too -->
+  <g transform="translate(330, 200)">
+    <!-- Dog Body -->
+    <ellipse cx="40" cy="40" rx="40" ry="25" fill="#ca8a04"/>
+    <!-- Dog Head -->
+    <polygon points="70,10 95,30 65,40" fill="#a16207"/>
+    <!-- Ears -->
+    <polygon points="65,10 70,-10 78,12" fill="#78350f"/>
+    <polygon points="75,10 82,-8 88,14" fill="#78350f"/>
+    <!-- Doggy shades -->
+    <polygon points="75,20 88,20 84,28 73,28" fill="#000000"/>
+    <!-- Front legs -->
+    <rect x="70" y="45" width="10" height="40" fill="#a16207" rx="3"/>
+    <rect x="55" y="45" width="10" height="40" fill="#854d0e" rx="3"/>
+    <!-- Tail -->
+    <path d="M0,35 Q-15,10 -25,20" stroke="#a16207" stroke-width="8" stroke-linecap="round" fill="none"/>
+  </g>
+
+  <!-- Badge -->
+  <rect x="20" y="20" width="140" height="42" rx="8" fill="#000000" fill-opacity="0.75" stroke="#f59e0b" stroke-width="1.5"/>
+  <text x="35" y="47" font-family="Impact, sans-serif" font-size="18" fill="#facc15" letter-spacing="1">TOP DOG</text>
+  <text x="310" y="335" font-family="Impact, sans-serif" font-size="16" fill="#fde047">PARTNERS IN ROUNDHOUSE JUSTICE</text>
+</svg>

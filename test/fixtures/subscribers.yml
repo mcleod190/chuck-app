@@ -1,0 +1,14 @@
+one:
+  email: "ranger_one@example.com"
+  name: "Cordell Fan"
+  blessing_tone: "Mighty Texas Ranger"
+  active: true
+  unsubscribe_token: "token_abc_123_unique_1"
+
+two:
+  email: "ranger_two@example.com"
+  name: "Delta Fan"
+  blessing_tone: "Delta Force Thunder"
+  active: true
+  unsubscribe_token: "token_def_456_unique_2"
+

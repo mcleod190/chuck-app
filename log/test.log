@@ -1,0 +1,730 @@
+  [1m[35m (0.7ms)[0m  [1m[35mDROP TABLE IF EXISTS "jokes"[0m
+  [1m[35m (0.3ms)[0m  [1m[35mCREATE TABLE "jokes" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "content" text NOT NULL, "movie_title" varchar, "character_name" varchar, "scene_description" text, "image_url" varchar, "category" varchar DEFAULT 'General Badassery', "likes_count" integer DEFAULT 0 NOT NULL, "featured" boolean DEFAULT 0 NOT NULL, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL)[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE INDEX "index_jokes_on_category" ON "jokes" ("category")[0m
+  [1m[35m (0.0ms)[0m  [1m[35mCREATE INDEX "index_jokes_on_featured" ON "jokes" ("featured")[0m
+  [1m[35m (0.0ms)[0m  [1m[35mDROP TABLE IF EXISTS "subscribers"[0m
+  [1m[35m (0.2ms)[0m  [1m[35mCREATE TABLE "subscribers" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "email" varchar NOT NULL, "name" varchar, "blessing_tone" varchar DEFAULT 'Mighty Texas Ranger', "active" boolean DEFAULT 1 NOT NULL, "unsubscribe_token" varchar NOT NULL, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL)[0m
+  [1m[35m (0.0ms)[0m  [1m[35mCREATE UNIQUE INDEX "index_subscribers_on_email" ON "subscribers" ("email")[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE UNIQUE INDEX "index_subscribers_on_unsubscribe_token" ON "subscribers" ("unsubscribe_token")[0m
+  [1m[35m (0.5ms)[0m  [1m[35mCREATE TABLE "schema_migrations" ("version" varchar NOT NULL PRIMARY KEY)[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.1ms)[0m  [1m[32mINSERT INTO "schema_migrations" (version) VALUES (20261029093227)[0m
+  [1m[35m (0.0ms)[0m  [1m[32mINSERT INTO "schema_migrations" (version) VALUES
+(20261029093226);[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE TABLE "ar_internal_metadata" ("key" varchar NOT NULL PRIMARY KEY, "value" varchar, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL)[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.0ms)[0m  [1m[34mSELECT * FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ? ORDER BY "ar_internal_metadata"."key" ASC LIMIT 1[0m  [[nil, "environment"]]
+  [1m[36mActiveRecord::InternalMetadata Create (0.2ms)[0m  [1m[32mINSERT INTO "ar_internal_metadata" ("key", "value", "created_at", "updated_at") VALUES ('environment', 'test', '2026-10-29 09:49:03.943557', '2026-10-29 09:49:03.943559') RETURNING "key"[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.0ms)[0m  [1m[34mSELECT * FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ? ORDER BY "ar_internal_metadata"."key" ASC LIMIT 1[0m  [[nil, "environment"]]
+  [1m[36mActiveRecord::InternalMetadata Load (0.0ms)[0m  [1m[34mSELECT * FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ? ORDER BY "ar_internal_metadata"."key" ASC LIMIT 1[0m  [[nil, "schema_sha1"]]
+  [1m[36mActiveRecord::InternalMetadata Create (0.0ms)[0m  [1m[32mINSERT INTO "ar_internal_metadata" ("key", "value", "created_at", "updated_at") VALUES ('schema_sha1', 'e32e06c93e61eb22cfc541549055cd27c75dfbf6', '2026-10-29 09:49:03.944171', '2026-10-29 09:49:03.944171') RETURNING "key"[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA foreign_keys[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA defer_foreign_keys[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA defer_foreign_keys = ON[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA foreign_keys = OFF[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mFixtures Load (0.1ms)[0m  [1m[31mDELETE FROM "jokes";
+DELETE FROM "subscribers";
+INSERT INTO "jokes" ("id", "content", "movie_title", "character_name", "scene_description", "image_url", "category", "likes_count", "featured", "created_at", "updated_at") VALUES (980190962, 'Chuck Norris once kicked a horse in the chin. Its descendants are known as giraffes.', 'Walker, Texas Ranger', 'Cordell Walker', 'Walker pauses and roundhouse kicks bad guys.', 'walker_kick.svg', 'Texas Ranger Grit', 50, 1, '2026-10-29 09:49:03.995138', '2026-10-29 09:49:03.995138');
+INSERT INTO "jokes" ("id", "content", "movie_title", "character_name", "scene_description", "image_url", "category", "likes_count", "featured", "created_at", "updated_at") VALUES (298486374, 'Chuck Norris can hear sign language.', 'Lone Wolf McQuade', 'J.J. McQuade', 'McQuade drives his truck.', 'lone_wolf_truck.svg', 'General Badassery', 25, 0, '2026-10-29 09:49:03.995138', '2026-10-29 09:49:03.995138');
+INSERT INTO "subscribers" ("id", "email", "name", "blessing_tone", "active", "unsubscribe_token", "created_at", "updated_at") VALUES (980190962, 'ranger_one@example.com', 'Cordell Fan', 'Mighty Texas Ranger', 1, 'token_abc_123_unique_1', '2026-10-29 09:49:03.996700', '2026-10-29 09:49:03.996700');
+INSERT INTO "subscribers" ("id", "email", "name", "blessing_tone", "active", "unsubscribe_token", "created_at", "updated_at") VALUES (298486374, 'ranger_two@example.com', 'Delta Fan', 'Delta Force Thunder', 1, 'token_def_456_unique_2', '2026-10-29 09:49:03.996700', '2026-10-29 09:49:03.996700')[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA defer_foreign_keys = 0[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA foreign_keys = 1[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA foreign_key_check[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+-----------------------------------------
+SubscriberTest: test_requires_valid_email
+-----------------------------------------
+  [1m[36mSubscriber Exists? (0.1ms)[0m  [1m[34mSELECT 1 AS one FROM "subscribers" WHERE LOWER("subscribers"."email") = LOWER(?) LIMIT ?[0m  [["email", ""], ["LIMIT", 1]]
+  [1m[36mSubscriber Exists? (0.0ms)[0m  [1m[34mSELECT 1 AS one FROM "subscribers" WHERE LOWER("subscribers"."email") = LOWER(?) LIMIT ?[0m  [["email", "not-an-email"], ["LIMIT", 1]]
+  [1m[36mSubscriber Exists? (0.0ms)[0m  [1m[34mSELECT 1 AS one FROM "subscribers" WHERE LOWER("subscribers"."email") = LOWER(?) LIMIT ?[0m  [["email", "valid.warrior@example.com"], ["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[31mrollback transaction[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+----------------------------------------------------------
+SubscriberTest: test_generates_unsubscribe_token_on_create
+----------------------------------------------------------
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mSubscriber Exists? (0.1ms)[0m  [1m[34mSELECT 1 AS one FROM "subscribers" WHERE LOWER("subscribers"."email") = LOWER(?) LIMIT ?[0m  [["email", "unique_new@example.com"], ["LIMIT", 1]]
+  [1m[36mSubscriber Create (0.1ms)[0m  [1m[32mINSERT INTO "subscribers" ("email", "name", "blessing_tone", "active", "unsubscribe_token", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?) RETURNING "id"[0m  [["email", "unique_new@example.com"], ["name", nil], ["blessing_tone", "Mighty Texas Ranger"], ["active", 1], ["unsubscribe_token", "[FILTERED]"], ["created_at", "2026-10-29 09:49:04.012447"], ["updated_at", "2026-10-29 09:49:04.012447"]]
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[31mrollback transaction[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+----------------------------------------------------------
+SubscriberTest: test_generates_personalized_daily_blessing
+----------------------------------------------------------
+  [1m[36mSubscriber Load (0.0ms)[0m  [1m[34mSELECT "subscribers".* FROM "subscribers" WHERE "subscribers"."id" = ? LIMIT ?[0m  [["id", 980190962], ["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[31mrollback transaction[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+----------------------------------------------
+SubscriberTest: test_enforces_email_uniqueness
+----------------------------------------------
+  [1m[36mSubscriber Load (0.0ms)[0m  [1m[34mSELECT "subscribers".* FROM "subscribers" WHERE "subscribers"."id" = ? LIMIT ?[0m  [["id", 980190962], ["LIMIT", 1]]
+  [1m[36mSubscriber Exists? (0.0ms)[0m  [1m[34mSELECT 1 AS one FROM "subscribers" WHERE LOWER("subscribers"."email") = LOWER(?) LIMIT ?[0m  [["email", "RANGER_ONE@EXAMPLE.COM"], ["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[31mrollback transaction[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+------------------------------------
+SubscriberTest: test_can_unsubscribe
+------------------------------------
+  [1m[36mSubscriber Load (0.0ms)[0m  [1m[34mSELECT "subscribers".* FROM "subscribers" WHERE "subscribers"."id" = ? LIMIT ?[0m  [["id", 980190962], ["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mSubscriber Exists? (0.1ms)[0m  [1m[34mSELECT 1 AS one FROM "subscribers" WHERE LOWER("subscribers"."email") = LOWER(?) AND "subscribers"."id" != ? LIMIT ?[0m  [["email", "ranger_one@example.com"], ["id", 980190962], ["LIMIT", 1]]
+  [1m[36mSubscriber Update (0.0ms)[0m  [1m[33mUPDATE "subscribers" SET "active" = ?, "updated_at" = ? WHERE "subscribers"."id" = ?[0m  [["active", 0], ["updated_at", "2026-10-29 09:49:04.019081"], ["id", 980190962]]
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[36mSubscriber Load (0.0ms)[0m  [1m[34mSELECT "subscribers".* FROM "subscribers" WHERE "subscribers"."id" = ? LIMIT ?[0m  [["id", 980190962], ["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[31mrollback transaction[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+----------------------------------
+JokeTest: test_returns_random_joke
+----------------------------------
+  [1m[36mJoke Load (0.3ms)[0m  [1m[34mSELECT "jokes".* FROM "jokes" ORDER BY RANDOM() LIMIT ?[0m  [["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[31mrollback transaction[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+--------------------------------------
+JokeTest: test_returns_joke_of_the_day
+--------------------------------------
+  [1m[36mJoke Count (0.0ms)[0m  [1m[34mSELECT COUNT(*) FROM "jokes"[0m
+  [1m[36mJoke Load (0.0ms)[0m  [1m[34mSELECT "jokes".* FROM "jokes" ORDER BY "jokes"."id" ASC LIMIT ? OFFSET ?[0m  [["LIMIT", 1], ["OFFSET", 0]]
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[31mrollback transaction[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+-------------------------------
+JokeTest: test_requires_content
+-------------------------------
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[31mrollback transaction[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+----------------------------------
+JokeTest: test_filters_by_category
+----------------------------------
+  [1m[36mJoke Load (0.0ms)[0m  [1m[34mSELECT "jokes".* FROM "jokes" WHERE "jokes"."category" = ?[0m  [["category", "Texas Ranger Grit"]]
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[31mrollback transaction[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+--------------------------------
+JokeTest: test_can_upvote_a_joke
+--------------------------------
+  [1m[36mJoke Load (0.0ms)[0m  [1m[34mSELECT "jokes".* FROM "jokes" WHERE "jokes"."id" = ? LIMIT ?[0m  [["id", 980190962], ["LIMIT", 1]]
+  [1m[36mJoke Update All (0.0ms)[0m  [1m[33mUPDATE "jokes" SET "likes_count" = COALESCE("likes_count", 0) + ? WHERE "jokes"."id" = ?[0m  [["likes_count", 1], ["id", 980190962]]
+  [1m[36mJoke Load (0.0ms)[0m  [1m[34mSELECT "jokes".* FROM "jokes" WHERE "jokes"."id" = ? LIMIT ?[0m  [["id", 980190962], ["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[31mrollback transaction[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+------------------------------------------
+JokesControllerTest: test_should_like_joke
+------------------------------------------
+  [1m[36mJoke Load (0.1ms)[0m  [1m[34mSELECT "jokes".* FROM "jokes" WHERE "jokes"."id" = ? LIMIT ?[0m  [["id", 980190962], ["LIMIT", 1]]
+Started POST "/jokes/980190962/like" for 127.0.0.1 at 2026-10-29 12:49:04 +0300
+Processing by JokesController#like as JSON
+  Parameters: {"id"=>"980190962", "joke"=>{}}
+  [1m[36mJoke Load (0.0ms)[0m  [1m[34mSELECT "jokes".* FROM "jokes" WHERE "jokes"."id" = ? LIMIT ?[0m  [["id", 980190962], ["LIMIT", 1]]
+  [1m[36mJoke Update All (0.1ms)[0m  [1m[33mUPDATE "jokes" SET "likes_count" = COALESCE("likes_count", 0) + ? WHERE "jokes"."id" = ?[0m  [["likes_count", 1], ["id", 980190962]]
+Completed 200 OK in 4ms (Views: 0.1ms | ActiveRecord: 0.1ms | Allocations: 3313)
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[31mrollback transaction[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+-----------------------------------------
+JokesControllerTest: test_should_get_root
+-----------------------------------------
+Started GET "/" for 127.0.0.1 at 2026-10-29 12:49:04 +0300
+Processing by JokesController#index as HTML
+  [1m[36mJoke Count (0.0ms)[0m  [1m[34mSELECT COUNT(*) FROM "jokes"[0m
+  [1m[36mJoke Load (0.0ms)[0m  [1m[34mSELECT "jokes".* FROM "jokes" ORDER BY "jokes"."id" ASC LIMIT ? OFFSET ?[0m  [["LIMIT", 1], ["OFFSET", 0]]
+  Rendering layout layouts/application.html.erb
+  Rendering jokes/index.html.erb within layouts/application
+  Rendered jokes/_hero.html.erb (Duration: 130.3ms | Allocations: 90334)
+  Rendered jokes/_daily_section.html.erb (Duration: 0.8ms | Allocations: 1070)
+  [1m[36mCACHE Joke Count (0.0ms)[0m  [1m[34mSELECT COUNT(*) FROM "jokes"[0m
+  [1m[36mJoke Load (0.1ms)[0m  [1m[34mSELECT "jokes".* FROM "jokes" ORDER BY "jokes"."likes_count" DESC, "jokes"."created_at" DESC[0m
+  Rendered jokes/_joke_card.html.erb (Duration: 0.6ms | Allocations: 904)
+  Rendered jokes/_joke_card.html.erb (Duration: 0.1ms | Allocations: 269)
+  Rendered jokes/_subscribe_section.html.erb (Duration: 4.2ms | Allocations: 3043)
+  Rendered jokes/_scripts.html.erb (Duration: 0.4ms | Allocations: 742)
+  Rendered jokes/index.html.erb within layouts/application (Duration: 139.2ms | Allocations: 98633)
+  Rendered layout layouts/application.html.erb (Duration: 143.6ms | Allocations: 112456)
+Completed 200 OK in 151ms (Views: 147.5ms | ActiveRecord: 0.1ms | Allocations: 118560)
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[31mrollback transaction[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+--------------------------------------------------------
+JokesControllerTest: test_should_get_random_joke_as_json
+--------------------------------------------------------
+Started GET "/jokes/random" for 127.0.0.1 at 2026-10-29 12:49:04 +0300
+Processing by JokesController#random as JSON
+  Parameters: {"joke"=>{}}
+  [1m[36mJoke Load (0.1ms)[0m  [1m[34mSELECT "jokes".* FROM "jokes" ORDER BY RANDOM() LIMIT ?[0m  [["LIMIT", 1]]
+Completed 200 OK in 1ms (Views: 0.1ms | ActiveRecord: 0.1ms | Allocations: 807)
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[31mrollback transaction[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+-----------------------------------------------------
+JokesControllerTest: test_should_get_instant_blessing
+-----------------------------------------------------
+Started GET "/jokes/bless_me?name=Walker&tone=Mighty+Texas+Ranger" for 127.0.0.1 at 2026-10-29 12:49:04 +0300
+Processing by JokesController#bless_me as HTML
+  Parameters: {"name"=>"Walker", "tone"=>"Mighty Texas Ranger"}
+Completed 200 OK in 0ms (Views: 0.0ms | ActiveRecord: 0.0ms | Allocations: 148)
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[31mrollback transaction[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+---------------------------------------------------------------
+JokesControllerTest: test_should_get_index_with_category_filter
+---------------------------------------------------------------
+Started GET "/?category=Texas+Ranger+Grit" for 127.0.0.1 at 2026-10-29 12:49:04 +0300
+Processing by JokesController#index as HTML
+  Parameters: {"category"=>"Texas Ranger Grit"}
+  [1m[36mJoke Count (0.0ms)[0m  [1m[34mSELECT COUNT(*) FROM "jokes"[0m
+  [1m[36mJoke Load (0.0ms)[0m  [1m[34mSELECT "jokes".* FROM "jokes" ORDER BY "jokes"."id" ASC LIMIT ? OFFSET ?[0m  [["LIMIT", 1], ["OFFSET", 0]]
+  Rendering layout layouts/application.html.erb
+  Rendering jokes/index.html.erb within layouts/application
+  Rendered jokes/_hero.html.erb (Duration: 0.1ms | Allocations: 246)
+  Rendered jokes/_daily_section.html.erb (Duration: 0.1ms | Allocations: 290)
+  [1m[36mCACHE Joke Count (0.0ms)[0m  [1m[34mSELECT COUNT(*) FROM "jokes"[0m
+  [1m[36mJoke Load (0.1ms)[0m  [1m[34mSELECT "jokes".* FROM "jokes" WHERE "jokes"."category" = ? ORDER BY "jokes"."likes_count" DESC, "jokes"."created_at" DESC[0m  [["category", "Texas Ranger Grit"]]
+  Rendered jokes/_joke_card.html.erb (Duration: 0.1ms | Allocations: 272)
+  Rendered jokes/_subscribe_section.html.erb (Duration: 0.4ms | Allocations: 496)
+  Rendered jokes/_scripts.html.erb (Duration: 0.0ms | Allocations: 10)
+  Rendered jokes/index.html.erb within layouts/application (Duration: 1.4ms | Allocations: 2244)
+  Rendered layout layouts/application.html.erb (Duration: 1.8ms | Allocations: 2999)
+Completed 200 OK in 3ms (Views: 1.9ms | ActiveRecord: 0.1ms | Allocations: 3844)
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[31mrollback transaction[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+----------------------------------------------------
+SubscribersControllerTest: test_should_preview_email
+----------------------------------------------------
+Started GET "/subscribers/preview_email" for 127.0.0.1 at 2026-10-29 12:49:04 +0300
+Processing by SubscribersController#preview_email as HTML
+  [1m[36mSubscriber Load (0.1ms)[0m  [1m[34mSELECT "subscribers".* FROM "subscribers" WHERE "subscribers"."active" = ? ORDER BY "subscribers"."id" ASC LIMIT ?[0m  [["active", 1], ["LIMIT", 1]]
+  [1m[36mJoke Count (0.0ms)[0m  [1m[34mSELECT COUNT(*) FROM "jokes"[0m
+  [1m[36mJoke Load (0.0ms)[0m  [1m[34mSELECT "jokes".* FROM "jokes" ORDER BY "jokes"."id" ASC LIMIT ? OFFSET ?[0m  [["LIMIT", 1], ["OFFSET", 0]]
+  Rendering chuck_mailer/daily_roundhouse.html.erb
+  Rendered chuck_mailer/daily_roundhouse.html.erb (Duration: 0.5ms | Allocations: 612)
+Completed 200 OK in 3ms (Views: 1.2ms | ActiveRecord: 0.1ms | Allocations: 2516)
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[31mrollback transaction[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+------------------------------------------------------------
+SubscribersControllerTest: test_should_unsubscribe_via_token
+------------------------------------------------------------
+  [1m[36mSubscriber Load (0.0ms)[0m  [1m[34mSELECT "subscribers".* FROM "subscribers" WHERE "subscribers"."id" = ? LIMIT ?[0m  [["id", 980190962], ["LIMIT", 1]]
+Started GET "/subscribers/unsubscribe?token=[FILTERED]" for 127.0.0.1 at 2026-10-29 12:49:04 +0300
+Processing by SubscribersController#unsubscribe as HTML
+  Parameters: {"token"=>"[FILTERED]"}
+  [1m[36mSubscriber Load (0.1ms)[0m  [1m[34mSELECT "subscribers".* FROM "subscribers" WHERE "subscribers"."unsubscribe_token" = ? LIMIT ?[0m  [["unsubscribe_token", "[FILTERED]"], ["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mSubscriber Exists? (0.1ms)[0m  [1m[34mSELECT 1 AS one FROM "subscribers" WHERE LOWER("subscribers"."email") = LOWER(?) AND "subscribers"."id" != ? LIMIT ?[0m  [["email", "ranger_one@example.com"], ["id", 980190962], ["LIMIT", 1]]
+  [1m[36mSubscriber Update (0.0ms)[0m  [1m[33mUPDATE "subscribers" SET "active" = ?, "updated_at" = ? WHERE "subscribers"."id" = ?[0m  [["active", 0], ["updated_at", "2026-10-29 09:49:04.309918"], ["id", 980190962]]
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  Rendering layout layouts/application.html.erb
+  Rendering subscribers/unsubscribe.html.erb within layouts/application
+  Rendered subscribers/unsubscribe.html.erb within layouts/application (Duration: 0.2ms | Allocations: 234)
+  Rendered layout layouts/application.html.erb (Duration: 0.6ms | Allocations: 1093)
+Completed 200 OK in 2ms (Views: 0.9ms | ActiveRecord: 0.2ms | Allocations: 2639)
+  [1m[36mSubscriber Load (0.0ms)[0m  [1m[34mSELECT "subscribers".* FROM "subscribers" WHERE "subscribers"."id" = ? LIMIT ?[0m  [["id", 980190962], ["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[31mrollback transaction[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+-------------------------------------------------------------------------------
+SubscribersControllerTest: test_should_handle_duplicate_subscription_gracefully
+-------------------------------------------------------------------------------
+  [1m[36mSubscriber Load (0.0ms)[0m  [1m[34mSELECT "subscribers".* FROM "subscribers" WHERE "subscribers"."id" = ? LIMIT ?[0m  [["id", 980190962], ["LIMIT", 1]]
+  [1m[36mSubscriber Count (0.0ms)[0m  [1m[34mSELECT COUNT(*) FROM "subscribers"[0m
+Started POST "/subscribers" for 127.0.0.1 at 2026-10-29 12:49:04 +0300
+Processing by SubscribersController#create as HTML
+  Parameters: {"subscriber"=>{"email"=>"ranger_one@example.com", "name"=>"Existing Warrior"}}
+  [1m[36mSubscriber Load (0.1ms)[0m  [1m[34mSELECT "subscribers".* FROM "subscribers" WHERE "subscribers"."email" = ? LIMIT ?[0m  [["email", "ranger_one@example.com"], ["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mSubscriber Exists? (0.1ms)[0m  [1m[34mSELECT 1 AS one FROM "subscribers" WHERE LOWER("subscribers"."email") = LOWER(?) AND "subscribers"."id" != ? LIMIT ?[0m  [["email", "ranger_one@example.com"], ["id", 980190962], ["LIMIT", 1]]
+  [1m[36mSubscriber Update (0.0ms)[0m  [1m[33mUPDATE "subscribers" SET "name" = ?, "updated_at" = ? WHERE "subscribers"."id" = ?[0m  [["name", "Existing Warrior"], ["updated_at", "2026-10-29 09:49:04.319758"], ["id", 980190962]]
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+Redirected to http://www.example.com/#subscribe
+Completed 302 Found in 2ms (ActiveRecord: 0.3ms | Allocations: 1746)
+  [1m[36mSubscriber Count (0.0ms)[0m  [1m[34mSELECT COUNT(*) FROM "subscribers"[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[31mrollback transaction[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+-------------------------------------------------------------------------------
+SubscribersControllerTest: test_should_create_subscriber_and_send_welcome_email
+-------------------------------------------------------------------------------
+  [1m[36mSubscriber Count (0.0ms)[0m  [1m[34mSELECT COUNT(*) FROM "subscribers"[0m
+Started POST "/subscribers" for 127.0.0.1 at 2026-10-29 12:49:04 +0300
+Processing by SubscribersController#create as HTML
+  Parameters: {"subscriber"=>{"email"=>"new_soldier@example.com", "name"=>"New Soldier", "blessing_tone"=>"Mighty Texas Ranger"}}
+  [1m[36mSubscriber Load (0.0ms)[0m  [1m[34mSELECT "subscribers".* FROM "subscribers" WHERE "subscribers"."email" = ? LIMIT ?[0m  [["email", "new_soldier@example.com"], ["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mSubscriber Exists? (0.1ms)[0m  [1m[34mSELECT 1 AS one FROM "subscribers" WHERE LOWER("subscribers"."email") = LOWER(?) LIMIT ?[0m  [["email", "new_soldier@example.com"], ["LIMIT", 1]]
+  [1m[36mSubscriber Create (0.1ms)[0m  [1m[32mINSERT INTO "subscribers" ("email", "name", "blessing_tone", "active", "unsubscribe_token", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?) RETURNING "id"[0m  [["email", "new_soldier@example.com"], ["name", "New Soldier"], ["blessing_tone", "Mighty Texas Ranger"], ["active", 1], ["unsubscribe_token", "[FILTERED]"], ["created_at", "2026-10-29 09:49:04.323570"], ["updated_at", "2026-10-29 09:49:04.323570"]]
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[36mJoke Count (0.0ms)[0m  [1m[34mSELECT COUNT(*) FROM "jokes"[0m
+  [1m[36mJoke Load (0.0ms)[0m  [1m[34mSELECT "jokes".* FROM "jokes" ORDER BY "jokes"."id" ASC LIMIT ? OFFSET ?[0m  [["LIMIT", 1], ["OFFSET", 0]]
+ChuckMailer#welcome_blessing: processed outbound mail in 7.9ms
+Mailer failed: undefined method `unsubscribe_subscriber_url' for #<ChuckMailer:0x0000000000bc98>
+Did you mean?  unsubscribe_subscribers_url
+Redirected to http://www.example.com/#subscribe
+Completed 302 Found in 11ms (ActiveRecord: 0.3ms | Allocations: 7723)
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[31mrollback transaction[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+--------------------------------------------
+ChuckMailerTest: test_welcome_blessing_email
+--------------------------------------------
+  [1m[36mSubscriber Load (0.0ms)[0m  [1m[34mSELECT "subscribers".* FROM "subscribers" WHERE "subscribers"."id" = ? LIMIT ?[0m  [["id", 980190962], ["LIMIT", 1]]
+  [1m[36mJoke Count (0.0ms)[0m  [1m[34mSELECT COUNT(*) FROM "jokes"[0m
+  [1m[36mJoke Load (0.0ms)[0m  [1m[34mSELECT "jokes".* FROM "jokes" ORDER BY "jokes"."id" ASC LIMIT ? OFFSET ?[0m  [["LIMIT", 1], ["OFFSET", 0]]
+ChuckMailer#welcome_blessing: processed outbound mail in 8.0ms
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[31mrollback transaction[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+--------------------------------------------
+ChuckMailerTest: test_daily_roundhouse_email
+--------------------------------------------
+  [1m[36mSubscriber Load (0.0ms)[0m  [1m[34mSELECT "subscribers".* FROM "subscribers" WHERE "subscribers"."id" = ? LIMIT ?[0m  [["id", 980190962], ["LIMIT", 1]]
+  [1m[36mJoke Load (0.0ms)[0m  [1m[34mSELECT "jokes".* FROM "jokes" WHERE "jokes"."id" = ? LIMIT ?[0m  [["id", 980190962], ["LIMIT", 1]]
+ChuckMailer#daily_roundhouse: processed outbound mail in 8.5ms
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[31mrollback transaction[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.3ms)[0m  [1m[34mSELECT * FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ? ORDER BY "ar_internal_metadata"."key" ASC LIMIT 1[0m  [[nil, "schema_sha1"]]
+  [1m[36mActiveRecord::SchemaMigration Load (0.0ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.1ms)[0m  [1m[35mPRAGMA foreign_keys[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA defer_foreign_keys[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA defer_foreign_keys = ON[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA foreign_keys = OFF[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mFixtures Load (0.4ms)[0m  [1m[31mDELETE FROM "jokes";
+DELETE FROM "subscribers";
+INSERT INTO "jokes" ("id", "content", "movie_title", "character_name", "scene_description", "image_url", "category", "likes_count", "featured", "created_at", "updated_at") VALUES (980190962, 'Chuck Norris once kicked a horse in the chin. Its descendants are known as giraffes.', 'Walker, Texas Ranger', 'Cordell Walker', 'Walker pauses and roundhouse kicks bad guys.', 'walker_kick.svg', 'Texas Ranger Grit', 50, 1, '2026-10-29 09:49:53.918670', '2026-10-29 09:49:53.918670');
+INSERT INTO "jokes" ("id", "content", "movie_title", "character_name", "scene_description", "image_url", "category", "likes_count", "featured", "created_at", "updated_at") VALUES (298486374, 'Chuck Norris can hear sign language.', 'Lone Wolf McQuade', 'J.J. McQuade', 'McQuade drives his truck.', 'lone_wolf_truck.svg', 'General Badassery', 25, 0, '2026-10-29 09:49:53.918670', '2026-10-29 09:49:53.918670');
+INSERT INTO "subscribers" ("id", "email", "name", "blessing_tone", "active", "unsubscribe_token", "created_at", "updated_at") VALUES (980190962, 'ranger_one@example.com', 'Cordell Fan', 'Mighty Texas Ranger', 1, 'token_abc_123_unique_1', '2026-10-29 09:49:53.920232', '2026-10-29 09:49:53.920232');
+INSERT INTO "subscribers" ("id", "email", "name", "blessing_tone", "active", "unsubscribe_token", "created_at", "updated_at") VALUES (298486374, 'ranger_two@example.com', 'Delta Fan', 'Delta Force Thunder', 1, 'token_def_456_unique_2', '2026-10-29 09:49:53.920232', '2026-10-29 09:49:53.920232')[0m
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA defer_foreign_keys = 0[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA foreign_keys = 1[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA foreign_key_check[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+--------------------------------------------
+ChuckMailerTest: test_daily_roundhouse_email
+--------------------------------------------
+  [1m[36mSubscriber Load (0.1ms)[0m  [1m[34mSELECT "subscribers".* FROM "subscribers" WHERE "subscribers"."id" = ? LIMIT ?[0m  [["id", 980190962], ["LIMIT", 1]]
+  [1m[36mJoke Load (0.0ms)[0m  [1m[34mSELECT "jokes".* FROM "jokes" WHERE "jokes"."id" = ? LIMIT ?[0m  [["id", 980190962], ["LIMIT", 1]]
+  Rendering layout layouts/mailer.html.erb
+  Rendering chuck_mailer/daily_roundhouse.html.erb within layouts/mailer
+  Rendered chuck_mailer/daily_roundhouse.html.erb within layouts/mailer (Duration: 0.5ms | Allocations: 770)
+  Rendered layout layouts/mailer.html.erb (Duration: 0.7ms | Allocations: 1027)
+  Rendering layout layouts/mailer.text.erb
+  Rendering chuck_mailer/daily_roundhouse.text.erb within layouts/mailer
+  Rendered chuck_mailer/daily_roundhouse.text.erb within layouts/mailer (Duration: 0.2ms | Allocations: 352)
+  Rendered layout layouts/mailer.text.erb (Duration: 0.3ms | Allocations: 520)
+ChuckMailer#daily_roundhouse: processed outbound mail in 21.5ms
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[31mrollback transaction[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+--------------------------------------------
+ChuckMailerTest: test_welcome_blessing_email
+--------------------------------------------
+  [1m[36mSubscriber Load (0.0ms)[0m  [1m[34mSELECT "subscribers".* FROM "subscribers" WHERE "subscribers"."id" = ? LIMIT ?[0m  [["id", 980190962], ["LIMIT", 1]]
+  [1m[36mJoke Count (0.0ms)[0m  [1m[34mSELECT COUNT(*) FROM "jokes"[0m
+  [1m[36mJoke Load (0.0ms)[0m  [1m[34mSELECT "jokes".* FROM "jokes" ORDER BY "jokes"."id" ASC LIMIT ? OFFSET ?[0m  [["LIMIT", 1], ["OFFSET", 0]]
+  Rendering layout layouts/mailer.html.erb
+  Rendering chuck_mailer/welcome_blessing.html.erb within layouts/mailer
+  Rendered chuck_mailer/welcome_blessing.html.erb within layouts/mailer (Duration: 0.4ms | Allocations: 548)
+  Rendered layout layouts/mailer.html.erb (Duration: 0.4ms | Allocations: 613)
+  Rendering layout layouts/mailer.text.erb
+  Rendering chuck_mailer/welcome_blessing.text.erb within layouts/mailer
+  Rendered chuck_mailer/welcome_blessing.text.erb within layouts/mailer (Duration: 0.2ms | Allocations: 326)
+  Rendered layout layouts/mailer.text.erb (Duration: 0.2ms | Allocations: 389)
+ChuckMailer#welcome_blessing: processed outbound mail in 2.7ms
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[31mrollback transaction[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+------------------------------------------------------------
+SubscribersControllerTest: test_should_unsubscribe_via_token
+------------------------------------------------------------
+  [1m[36mSubscriber Load (0.0ms)[0m  [1m[34mSELECT "subscribers".* FROM "subscribers" WHERE "subscribers"."id" = ? LIMIT ?[0m  [["id", 980190962], ["LIMIT", 1]]
+Started GET "/subscribers/unsubscribe?token=[FILTERED]" for 127.0.0.1 at 2026-10-29 12:49:54 +0300
+Processing by SubscribersController#unsubscribe as HTML
+  Parameters: {"token"=>"[FILTERED]"}
+  [1m[36mSubscriber Load (0.1ms)[0m  [1m[34mSELECT "subscribers".* FROM "subscribers" WHERE "subscribers"."unsubscribe_token" = ? LIMIT ?[0m  [["unsubscribe_token", "[FILTERED]"], ["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mSubscriber Exists? (0.1ms)[0m  [1m[34mSELECT 1 AS one FROM "subscribers" WHERE LOWER("subscribers"."email") = LOWER(?) AND "subscribers"."id" != ? LIMIT ?[0m  [["email", "ranger_one@example.com"], ["id", 980190962], ["LIMIT", 1]]
+  [1m[36mSubscriber Update (0.0ms)[0m  [1m[33mUPDATE "subscribers" SET "active" = ?, "updated_at" = ? WHERE "subscribers"."id" = ?[0m  [["active", 0], ["updated_at", "2026-10-29 09:49:54.042601"], ["id", 980190962]]
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  Rendering layout layouts/application.html.erb
+  Rendering subscribers/unsubscribe.html.erb within layouts/application
+  Rendered subscribers/unsubscribe.html.erb within layouts/application (Duration: 0.3ms | Allocations: 334)
+  Rendered layout layouts/application.html.erb (Duration: 33.7ms | Allocations: 36548)
+Completed 200 OK in 37ms (Views: 34.7ms | ActiveRecord: 0.2ms | Allocations: 40122)
+  [1m[36mSubscriber Load (0.0ms)[0m  [1m[34mSELECT "subscribers".* FROM "subscribers" WHERE "subscribers"."id" = ? LIMIT ?[0m  [["id", 980190962], ["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[31mrollback transaction[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+-------------------------------------------------------------------------------
+SubscribersControllerTest: test_should_create_subscriber_and_send_welcome_email
+-------------------------------------------------------------------------------
+  [1m[36mSubscriber Count (0.0ms)[0m  [1m[34mSELECT COUNT(*) FROM "subscribers"[0m
+Started POST "/subscribers" for 127.0.0.1 at 2026-10-29 12:49:54 +0300
+Processing by SubscribersController#create as HTML
+  Parameters: {"subscriber"=>{"email"=>"new_soldier@example.com", "name"=>"New Soldier", "blessing_tone"=>"Mighty Texas Ranger"}}
+  [1m[36mSubscriber Load (0.1ms)[0m  [1m[34mSELECT "subscribers".* FROM "subscribers" WHERE "subscribers"."email" = ? LIMIT ?[0m  [["email", "new_soldier@example.com"], ["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mSubscriber Exists? (0.1ms)[0m  [1m[34mSELECT 1 AS one FROM "subscribers" WHERE LOWER("subscribers"."email") = LOWER(?) LIMIT ?[0m  [["email", "new_soldier@example.com"], ["LIMIT", 1]]
+  [1m[36mSubscriber Create (0.1ms)[0m  [1m[32mINSERT INTO "subscribers" ("email", "name", "blessing_tone", "active", "unsubscribe_token", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?) RETURNING "id"[0m  [["email", "new_soldier@example.com"], ["name", "New Soldier"], ["blessing_tone", "Mighty Texas Ranger"], ["active", 1], ["unsubscribe_token", "[FILTERED]"], ["created_at", "2026-10-29 09:49:54.085169"], ["updated_at", "2026-10-29 09:49:54.085169"]]
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[36mJoke Count (0.0ms)[0m  [1m[34mSELECT COUNT(*) FROM "jokes"[0m
+  [1m[36mJoke Load (0.0ms)[0m  [1m[34mSELECT "jokes".* FROM "jokes" ORDER BY "jokes"."id" ASC LIMIT ? OFFSET ?[0m  [["LIMIT", 1], ["OFFSET", 0]]
+  Rendering layout layouts/mailer.html.erb
+  Rendering chuck_mailer/welcome_blessing.html.erb within layouts/mailer
+  Rendered chuck_mailer/welcome_blessing.html.erb within layouts/mailer (Duration: 0.1ms | Allocations: 59)
+  Rendered layout layouts/mailer.html.erb (Duration: 0.1ms | Allocations: 124)
+  Rendering layout layouts/mailer.text.erb
+  Rendering chuck_mailer/welcome_blessing.text.erb within layouts/mailer
+  Rendered chuck_mailer/welcome_blessing.text.erb within layouts/mailer (Duration: 0.0ms | Allocations: 38)
+  Rendered layout layouts/mailer.text.erb (Duration: 0.1ms | Allocations: 101)
+ChuckMailer#welcome_blessing: processed outbound mail in 1.6ms
+Delivered mail 6ae316c216c14_1e7c1054938be@MacBook-Air-480.local.mail (16.8ms)
+Date: Thu, 29 Oct 2026 12:49:54 +0300
+From: Chuck Norris <blessings@chucknorrisapproved.com>
+To: new_soldier@example.com
+Message-ID: <6ae316c216c14_1e7c1054938be@MacBook-Air-480.local.mail>
+Subject: =?UTF-8?Q?=E2=9A=A1_Chuck_Norris_has_noticed_you!_Your_Daily?=
+ =?UTF-8?Q?_Blessing_&_Welcome_Joke?=
+MIME-Version: 1.0
+Content-Type: multipart/alternative;
+ boundary="--==_mimepart_6ae316c215392_1e7c1054937e8";
+ charset=UTF-8
+Content-Transfer-Encoding: 7bit
+
+
+----==_mimepart_6ae316c215392_1e7c1054937e8
+Content-Type: text/plain;
+ charset=UTF-8
+Content-Transfer-Encoding: quoted-printable
+
+CHUCK NORRIS APPROVES
+=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D
+Official Daily Roundhouse of Wisdom & Blessing
+
+Hello New Soldier,
+
+You have made the wisest choice of your life: subscribing to the daily bl=
+essings of Chuck Norris.
+
+YOUR PERSONAL BLESSING & GOOD DAY WISH:
+"Greetings, New Soldier. Cordell Walker here. Out here in Texas, we don't=
+ back down from a showdown, and neither should you. I'm blessing your pat=
+h today with unbreakable fortitude, straight shooting, and honest grit. R=
+emember: the stars at night are big and bright, but your courage today wi=
+ll outshine them all. Go seize the day, partner!"
+=E2=80=94 Chuck Norris
+
+JOKE OF THE DAY:
+"Chuck Norris can hear sign language."
+(Lore: Lone Wolf McQuade)
+
+Visit the gallery: http://example.com/
+
+Unsubscribe: http://example.com/subscribers/unsubscribe?token=3DgUQ8NetGd=
+klOgNoaLbj83LZB8Uo10Ewsdamf9xFH5WY
+
+
+----==_mimepart_6ae316c215392_1e7c1054937e8
+Content-Type: text/html;
+ charset=UTF-8
+Content-Transfer-Encoding: quoted-printable
+
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta http-equiv=3D"Content-Type" content=3D"text/html; charset=3Dutf=
+-8">
+    <style>
+      /* Email styles need to be inline */
+    </style>
+  </head>
+
+  <body>
+    <!DOCTYPE html>
+<html>
+<head>
+  <meta charset=3D"utf-8">
+  <style>
+    body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Ro=
+boto, Helvetica, Arial, sans-serif; background-color: #0f172a; color: #f8=
+fafc; margin: 0; padding: 20px; }
+    .container { max-width: 600px; margin: 0 auto; background: #1e293b; b=
+order-radius: 16px; overflow: hidden; border: 2px solid #eab308; box-shad=
+ow: 0 10px 25px rgba(0,0,0,0.5); }
+    .header { background: linear-gradient(135deg, #78350f, #b45309, #d977=
+06); padding: 30px 20px; text-align: center; }
+    .header h1 { margin: 0; color: #ffffff; font-size: 26px; text-transfo=
+rm: uppercase; letter-spacing: 2px; text-shadow: 2px 2px 4px rgba(0,0,0,0=
+.6); }
+    .header p { margin: 8px 0 0; color: #fef08a; font-size: 14px; font-we=
+ight: bold; }
+    .content { padding: 30px 25px; line-height: 1.6; }
+    .greeting { font-size: 18px; color: #fef08a; font-weight: bold; margi=
+n-bottom: 15px; }
+    .blessing-card { background: #0f172a; border-left: 4px solid #eab308;=
+ padding: 20px; border-radius: 8px; margin: 20px 0; font-style: italic; f=
+ont-size: 16px; color: #e2e8f0; }
+    .blessing-author { margin-top: 10px; font-style: normal; font-weight:=
+ bold; color: #facc15; text-align: right; }
+    .joke-card { background: #334155; border: 1px dashed #eab308; padding=
+: 20px; border-radius: 12px; margin: 25px 0; text-align: center; }
+    .joke-tag { display: inline-block; background: #eab308; color: #000; =
+font-size: 11px; font-weight: 800; text-transform: uppercase; padding: 4p=
+x 10px; border-radius: 20px; margin-bottom: 12px; }
+    .joke-text { font-size: 18px; font-weight: 600; color: #ffffff; margi=
+n: 0 0 10px; }
+    .movie-note { font-size: 13px; color: #94a3b8; }
+    .action-btn { display: inline-block; background: #eab308; color: #0f1=
+72a; font-weight: bold; text-decoration: none; padding: 12px 25px; border=
+-radius: 8px; text-transform: uppercase; font-size: 14px; letter-spacing:=
+ 1px; }
+    .footer { text-align: center; padding: 20px; font-size: 12px; color: =
+#64748b; border-top: 1px solid #334155; }
+    .footer a { color: #94a3b8; text-decoration: underline; }
+  </style>
+</head>
+<body>
+  <div class=3D"container">
+    <div class=3D"header">
+      <h1>CHUCK NORRIS APPROVES</h1>
+      <p>Official Daily Roundhouse of Wisdom & Blessing</p>
+    </div>
+
+    <div class=3D"content">
+      <div class=3D"greeting">Hello, New Soldier!</div>
+      <p>You have made the wisest choice of your life: subscribing to the=
+ daily blessings of Chuck Norris.</p>
+      =
+
+      <p style=3D"color: #cbd5e1;">Here is your personal blessing and wis=
+h for a phenomenal day straight from the legend:</p>
+
+      <div class=3D"blessing-card">
+        "Greetings, New Soldier. Cordell Walker here. Out here in Texas, =
+we don&#39;t back down from a showdown, and neither should you. I&#39;m b=
+lessing your path today with unbreakable fortitude, straight shooting, an=
+d honest grit. Remember: the stars at night are big and bright, but your =
+courage today will outshine them all. Go seize the day, partner!"
+        <div class=3D"blessing-author">=E2=80=94 Chuck Norris</div>
+      </div>
+
+        <div class=3D"joke-card">
+          <div class=3D"joke-tag">=F0=9F=94=A5 Joke of the Day</div>
+          <div class=3D"joke-text">"Chuck Norris can hear sign language."=
+</div>
+            <div class=3D"movie-note">=F0=9F=8E=AC As seen in legendary l=
+ore: <strong>Lone Wolf McQuade</strong></div>
+        </div>
+
+      <div style=3D"text-align: center; margin: 30px 0 10px;">
+        <a href=3D"http://example.com/" class=3D"action-btn">Visit Chuck'=
+s Meme Gallery</a>
+      </div>
+
+      <p style=3D"font-size: 14px; color: #94a3b8; text-align: center;">
+        Go forth with confidence. Today is yours. If anything challenges =
+you, remind it who sent you this email.
+      </p>
+    </div>
+
+    <div class=3D"footer">
+      <p>Delivered with 100% roundhouse precision.</p>
+      <p>Don't want these blessings anymore? <a href=3D"http://example.co=
+m/subscribers/unsubscribe?token=3DgUQ8NetGdklOgNoaLbj83LZB8Uo10Ewsdamf9xF=
+H5WY">Unsubscribe (at your own peril)</a></p>
+    </div>
+  </div>
+</body>
+</html>
+
+  </body>
+</html>
+
+----==_mimepart_6ae316c215392_1e7c1054937e8--
+
+Redirected to http://www.example.com/#subscribe
+Completed 302 Found in 21ms (ActiveRecord: 0.2ms | Allocations: 23155)
+  [1m[36mSubscriber Count (0.1ms)[0m  [1m[34mSELECT COUNT(*) FROM "subscribers"[0m
+Started GET "/" for 127.0.0.1 at 2026-10-29 12:49:54 +0300
+Processing by JokesController#index as HTML
+  [1m[36mCACHE Joke Count (0.0ms)[0m  [1m[34mSELECT COUNT(*) FROM "jokes"[0m
+  [1m[36mCACHE Joke Load (0.0ms)[0m  [1m[34mSELECT "jokes".* FROM "jokes" ORDER BY "jokes"."id" ASC LIMIT ? OFFSET ?[0m  [["LIMIT", 1], ["OFFSET", 0]]
+  Rendering layout layouts/application.html.erb
+  Rendering jokes/index.html.erb within layouts/application
+  Rendered jokes/_hero.html.erb (Duration: 0.9ms | Allocations: 964)
+  Rendered jokes/_daily_section.html.erb (Duration: 0.6ms | Allocations: 1028)
+  [1m[36mCACHE Joke Count (0.0ms)[0m  [1m[34mSELECT COUNT(*) FROM "jokes"[0m
+  [1m[36mJoke Load (0.1ms)[0m  [1m[34mSELECT "jokes".* FROM "jokes" ORDER BY "jokes"."likes_count" DESC, "jokes"."created_at" DESC[0m
+  Rendered jokes/_joke_card.html.erb (Duration: 0.9ms | Allocations: 1069)
+  Rendered jokes/_joke_card.html.erb (Duration: 0.1ms | Allocations: 269)
+  Rendered jokes/_subscribe_section.html.erb (Duration: 2.6ms | Allocations: 2628)
+  Rendered jokes/_scripts.html.erb (Duration: 0.3ms | Allocations: 742)
+  Rendered jokes/index.html.erb within layouts/application (Duration: 8.2ms | Allocations: 8679)
+  Rendered layout layouts/application.html.erb (Duration: 13.3ms | Allocations: 12582)
+Completed 200 OK in 15ms (Views: 13.7ms | ActiveRecord: 0.1ms | Allocations: 13743)
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[31mrollback transaction[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+----------------------------------------------------
+SubscribersControllerTest: test_should_preview_email
+----------------------------------------------------
+Started GET "/subscribers/preview_email" for 127.0.0.1 at 2026-10-29 12:49:54 +0300
+Processing by SubscribersController#preview_email as HTML
+  [1m[36mSubscriber Load (0.1ms)[0m  [1m[34mSELECT "subscribers".* FROM "subscribers" WHERE "subscribers"."active" = ? ORDER BY "subscribers"."id" ASC LIMIT ?[0m  [["active", 1], ["LIMIT", 1]]
+  [1m[36mJoke Count (0.0ms)[0m  [1m[34mSELECT COUNT(*) FROM "jokes"[0m
+  [1m[36mJoke Load (0.0ms)[0m  [1m[34mSELECT "jokes".* FROM "jokes" ORDER BY "jokes"."id" ASC LIMIT ? OFFSET ?[0m  [["LIMIT", 1], ["OFFSET", 0]]
+  Rendering chuck_mailer/daily_roundhouse.html.erb
+  Rendered chuck_mailer/daily_roundhouse.html.erb (Duration: 0.0ms | Allocations: 46)
+Completed 200 OK in 1ms (Views: 0.2ms | ActiveRecord: 0.1ms | Allocations: 1745)
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[31mrollback transaction[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+-------------------------------------------------------------------------------
+SubscribersControllerTest: test_should_handle_duplicate_subscription_gracefully
+-------------------------------------------------------------------------------
+  [1m[36mSubscriber Load (0.0ms)[0m  [1m[34mSELECT "subscribers".* FROM "subscribers" WHERE "subscribers"."id" = ? LIMIT ?[0m  [["id", 980190962], ["LIMIT", 1]]
+  [1m[36mSubscriber Count (0.0ms)[0m  [1m[34mSELECT COUNT(*) FROM "subscribers"[0m
+Started POST "/subscribers" for 127.0.0.1 at 2026-10-29 12:49:54 +0300
+Processing by SubscribersController#create as HTML
+  Parameters: {"subscriber"=>{"email"=>"ranger_one@example.com", "name"=>"Existing Warrior"}}
+  [1m[36mSubscriber Load (0.0ms)[0m  [1m[34mSELECT "subscribers".* FROM "subscribers" WHERE "subscribers"."email" = ? LIMIT ?[0m  [["email", "ranger_one@example.com"], ["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mSubscriber Exists? (0.1ms)[0m  [1m[34mSELECT 1 AS one FROM "subscribers" WHERE LOWER("subscribers"."email") = LOWER(?) AND "subscribers"."id" != ? LIMIT ?[0m  [["email", "ranger_one@example.com"], ["id", 980190962], ["LIMIT", 1]]
+  [1m[36mSubscriber Update (0.0ms)[0m  [1m[33mUPDATE "subscribers" SET "name" = ?, "updated_at" = ? WHERE "subscribers"."id" = ?[0m  [["name", "Existing Warrior"], ["updated_at", "2026-10-29 09:49:54.128538"], ["id", 980190962]]
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+Redirected to http://www.example.com/#subscribe
+Completed 302 Found in 1ms (ActiveRecord: 0.1ms | Allocations: 1425)
+  [1m[36mSubscriber Count (0.0ms)[0m  [1m[34mSELECT COUNT(*) FROM "subscribers"[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[31mrollback transaction[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+----------------------------------
+JokeTest: test_filters_by_category
+----------------------------------
+  [1m[36mJoke Load (0.1ms)[0m  [1m[34mSELECT "jokes".* FROM "jokes" WHERE "jokes"."category" = ?[0m  [["category", "Texas Ranger Grit"]]
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[31mrollback transaction[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+--------------------------------
+JokeTest: test_can_upvote_a_joke
+--------------------------------
+  [1m[36mJoke Load (0.0ms)[0m  [1m[34mSELECT "jokes".* FROM "jokes" WHERE "jokes"."id" = ? LIMIT ?[0m  [["id", 980190962], ["LIMIT", 1]]
+  [1m[36mJoke Update All (0.0ms)[0m  [1m[33mUPDATE "jokes" SET "likes_count" = COALESCE("likes_count", 0) + ? WHERE "jokes"."id" = ?[0m  [["likes_count", 1], ["id", 980190962]]
+  [1m[36mJoke Load (0.0ms)[0m  [1m[34mSELECT "jokes".* FROM "jokes" WHERE "jokes"."id" = ? LIMIT ?[0m  [["id", 980190962], ["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[31mrollback transaction[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+-------------------------------
+JokeTest: test_requires_content
+-------------------------------
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[31mrollback transaction[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+----------------------------------
+JokeTest: test_returns_random_joke
+----------------------------------
+  [1m[36mJoke Load (0.1ms)[0m  [1m[34mSELECT "jokes".* FROM "jokes" ORDER BY RANDOM() LIMIT ?[0m  [["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[31mrollback transaction[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+--------------------------------------
+JokeTest: test_returns_joke_of_the_day
+--------------------------------------
+  [1m[36mJoke Count (0.0ms)[0m  [1m[34mSELECT COUNT(*) FROM "jokes"[0m
+  [1m[36mJoke Load (0.0ms)[0m  [1m[34mSELECT "jokes".* FROM "jokes" ORDER BY "jokes"."id" ASC LIMIT ? OFFSET ?[0m  [["LIMIT", 1], ["OFFSET", 0]]
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[31mrollback transaction[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+----------------------------------------------
+SubscriberTest: test_enforces_email_uniqueness
+----------------------------------------------
+  [1m[36mSubscriber Load (0.0ms)[0m  [1m[34mSELECT "subscribers".* FROM "subscribers" WHERE "subscribers"."id" = ? LIMIT ?[0m  [["id", 980190962], ["LIMIT", 1]]
+  [1m[36mSubscriber Exists? (0.0ms)[0m  [1m[34mSELECT 1 AS one FROM "subscribers" WHERE LOWER("subscribers"."email") = LOWER(?) LIMIT ?[0m  [["email", "RANGER_ONE@EXAMPLE.COM"], ["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[31mrollback transaction[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+------------------------------------
+SubscriberTest: test_can_unsubscribe
+------------------------------------
+  [1m[36mSubscriber Load (0.0ms)[0m  [1m[34mSELECT "subscribers".* FROM "subscribers" WHERE "subscribers"."id" = ? LIMIT ?[0m  [["id", 980190962], ["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mSubscriber Exists? (0.1ms)[0m  [1m[34mSELECT 1 AS one FROM "subscribers" WHERE LOWER("subscribers"."email") = LOWER(?) AND "subscribers"."id" != ? LIMIT ?[0m  [["email", "ranger_one@example.com"], ["id", 980190962], ["LIMIT", 1]]
+  [1m[36mSubscriber Update (0.0ms)[0m  [1m[33mUPDATE "subscribers" SET "active" = ?, "updated_at" = ? WHERE "subscribers"."id" = ?[0m  [["active", 0], ["updated_at", "2026-10-29 09:49:54.134706"], ["id", 980190962]]
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[36mSubscriber Load (0.0ms)[0m  [1m[34mSELECT "subscribers".* FROM "subscribers" WHERE "subscribers"."id" = ? LIMIT ?[0m  [["id", 980190962], ["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[31mrollback transaction[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+----------------------------------------------------------
+SubscriberTest: test_generates_personalized_daily_blessing
+----------------------------------------------------------
+  [1m[36mSubscriber Load (0.0ms)[0m  [1m[34mSELECT "subscribers".* FROM "subscribers" WHERE "subscribers"."id" = ? LIMIT ?[0m  [["id", 980190962], ["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[31mrollback transaction[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+-----------------------------------------
+SubscriberTest: test_requires_valid_email
+-----------------------------------------
+  [1m[36mSubscriber Exists? (0.0ms)[0m  [1m[34mSELECT 1 AS one FROM "subscribers" WHERE LOWER("subscribers"."email") = LOWER(?) LIMIT ?[0m  [["email", ""], ["LIMIT", 1]]
+  [1m[36mSubscriber Exists? (0.0ms)[0m  [1m[34mSELECT 1 AS one FROM "subscribers" WHERE LOWER("subscribers"."email") = LOWER(?) LIMIT ?[0m  [["email", "not-an-email"], ["LIMIT", 1]]
+  [1m[36mSubscriber Exists? (0.0ms)[0m  [1m[34mSELECT 1 AS one FROM "subscribers" WHERE LOWER("subscribers"."email") = LOWER(?) LIMIT ?[0m  [["email", "valid.warrior@example.com"], ["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[31mrollback transaction[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+----------------------------------------------------------
+SubscriberTest: test_generates_unsubscribe_token_on_create
+----------------------------------------------------------
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mSubscriber Exists? (0.1ms)[0m  [1m[34mSELECT 1 AS one FROM "subscribers" WHERE LOWER("subscribers"."email") = LOWER(?) LIMIT ?[0m  [["email", "unique_new@example.com"], ["LIMIT", 1]]
+  [1m[36mSubscriber Create (0.1ms)[0m  [1m[32mINSERT INTO "subscribers" ("email", "name", "blessing_tone", "active", "unsubscribe_token", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?) RETURNING "id"[0m  [["email", "unique_new@example.com"], ["name", nil], ["blessing_tone", "Mighty Texas Ranger"], ["active", 1], ["unsubscribe_token", "[FILTERED]"], ["created_at", "2026-10-29 09:49:54.136970"], ["updated_at", "2026-10-29 09:49:54.136970"]]
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[31mrollback transaction[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+-----------------------------------------------------
+JokesControllerTest: test_should_get_instant_blessing
+-----------------------------------------------------
+Started GET "/jokes/bless_me?name=Walker&tone=Mighty+Texas+Ranger" for 127.0.0.1 at 2026-10-29 12:49:54 +0300
+Processing by JokesController#bless_me as HTML
+  Parameters: {"name"=>"Walker", "tone"=>"Mighty Texas Ranger"}
+Completed 200 OK in 0ms (Views: 0.1ms | ActiveRecord: 0.0ms | Allocations: 160)
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[31mrollback transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+---------------------------------------------------------------
+JokesControllerTest: test_should_get_index_with_category_filter
+---------------------------------------------------------------
+Started GET "/?category=Texas+Ranger+Grit" for 127.0.0.1 at 2026-10-29 12:49:54 +0300
+Processing by JokesController#index as HTML
+  Parameters: {"category"=>"Texas Ranger Grit"}
+  [1m[36mJoke Count (0.1ms)[0m  [1m[34mSELECT COUNT(*) FROM "jokes"[0m
+  [1m[36mJoke Load (0.0ms)[0m  [1m[34mSELECT "jokes".* FROM "jokes" ORDER BY "jokes"."id" ASC LIMIT ? OFFSET ?[0m  [["LIMIT", 1], ["OFFSET", 0]]
+  Rendering layout layouts/application.html.erb
+  Rendering jokes/index.html.erb within layouts/application
+  Rendered jokes/_hero.html.erb (Duration: 0.2ms | Allocations: 287)
+  Rendered jokes/_daily_section.html.erb (Duration: 0.2ms | Allocations: 301)
+  [1m[36mCACHE Joke Count (0.0ms)[0m  [1m[34mSELECT COUNT(*) FROM "jokes"[0m
+  [1m[36mJoke Load (0.1ms)[0m  [1m[34mSELECT "jokes".* FROM "jokes" WHERE "jokes"."category" = ? ORDER BY "jokes"."likes_count" DESC, "jokes"."created_at" DESC[0m  [["category", "Texas Ranger Grit"]]
+  Rendered jokes/_joke_card.html.erb (Duration: 0.1ms | Allocations: 271)
+  Rendered jokes/_subscribe_section.html.erb (Duration: 0.3ms | Allocations: 506)
+  Rendered jokes/_scripts.html.erb (Duration: 0.0ms | Allocations: 10)
+  Rendered jokes/index.html.erb within layouts/application (Duration: 1.4ms | Allocations: 2289)
+  Rendered layout layouts/application.html.erb (Duration: 1.8ms | Allocations: 3061)
+Completed 200 OK in 3ms (Views: 1.9ms | ActiveRecord: 0.1ms | Allocations: 3839)
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[31mrollback transaction[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+--------------------------------------------------------
+JokesControllerTest: test_should_get_random_joke_as_json
+--------------------------------------------------------
+Started GET "/jokes/random" for 127.0.0.1 at 2026-10-29 12:49:54 +0300
+Processing by JokesController#random as JSON
+  Parameters: {"joke"=>{}}
+  [1m[36mJoke Load (0.1ms)[0m  [1m[34mSELECT "jokes".* FROM "jokes" ORDER BY RANDOM() LIMIT ?[0m  [["LIMIT", 1]]
+Completed 200 OK in 0ms (Views: 0.1ms | ActiveRecord: 0.1ms | Allocations: 700)
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[31mrollback transaction[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+------------------------------------------
+JokesControllerTest: test_should_like_joke
+------------------------------------------
+  [1m[36mJoke Load (0.0ms)[0m  [1m[34mSELECT "jokes".* FROM "jokes" WHERE "jokes"."id" = ? LIMIT ?[0m  [["id", 980190962], ["LIMIT", 1]]
+Started POST "/jokes/980190962/like" for 127.0.0.1 at 2026-10-29 12:49:54 +0300
+Processing by JokesController#like as JSON
+  Parameters: {"id"=>"980190962", "joke"=>{}}
+  [1m[36mJoke Load (0.0ms)[0m  [1m[34mSELECT "jokes".* FROM "jokes" WHERE "jokes"."id" = ? LIMIT ?[0m  [["id", 980190962], ["LIMIT", 1]]
+  [1m[36mJoke Update All (0.0ms)[0m  [1m[33mUPDATE "jokes" SET "likes_count" = COALESCE("likes_count", 0) + ? WHERE "jokes"."id" = ?[0m  [["likes_count", 1], ["id", 980190962]]
+Completed 200 OK in 0ms (Views: 0.0ms | ActiveRecord: 0.0ms | Allocations: 633)
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[31mrollback transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+-----------------------------------------
+JokesControllerTest: test_should_get_root
+-----------------------------------------
+Started GET "/" for 127.0.0.1 at 2026-10-29 12:49:54 +0300
+Processing by JokesController#index as HTML
+  [1m[36mJoke Count (0.0ms)[0m  [1m[34mSELECT COUNT(*) FROM "jokes"[0m
+  [1m[36mJoke Load (0.0ms)[0m  [1m[34mSELECT "jokes".* FROM "jokes" ORDER BY "jokes"."id" ASC LIMIT ? OFFSET ?[0m  [["LIMIT", 1], ["OFFSET", 0]]
+  Rendering layout layouts/application.html.erb
+  Rendering jokes/index.html.erb within layouts/application
+  Rendered jokes/_hero.html.erb (Duration: 0.1ms | Allocations: 246)
+  Rendered jokes/_daily_section.html.erb (Duration: 0.1ms | Allocations: 287)
+  [1m[36mCACHE Joke Count (0.0ms)[0m  [1m[34mSELECT COUNT(*) FROM "jokes"[0m
+  [1m[36mJoke Load (0.0ms)[0m  [1m[34mSELECT "jokes".* FROM "jokes" ORDER BY "jokes"."likes_count" DESC, "jokes"."created_at" DESC[0m
+  Rendered jokes/_joke_card.html.erb (Duration: 0.1ms | Allocations: 270)
+  Rendered jokes/_joke_card.html.erb (Duration: 0.1ms | Allocations: 269)
+  Rendered jokes/_subscribe_section.html.erb (Duration: 0.4ms | Allocations: 481)
+  Rendered jokes/_scripts.html.erb (Duration: 0.0ms | Allocations: 10)
+  Rendered jokes/index.html.erb within layouts/application (Duration: 1.5ms | Allocations: 2463)
+  Rendered layout layouts/application.html.erb (Duration: 1.9ms | Allocations: 3217)
+Completed 200 OK in 3ms (Views: 2.1ms | ActiveRecord: 0.1ms | Allocations: 3945)
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[31mrollback transaction[0m

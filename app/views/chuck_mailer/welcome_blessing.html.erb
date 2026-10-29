@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <style>
+    body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif; background-color: #0f172a; color: #f8fafc; margin: 0; padding: 20px; }
+    .container { max-width: 600px; margin: 0 auto; background: #1e293b; border-radius: 16px; overflow: hidden; border: 2px solid #eab308; box-shadow: 0 10px 25px rgba(0,0,0,0.5); }
+    .header { background: linear-gradient(135deg, #78350f, #b45309, #d97706); padding: 30px 20px; text-align: center; }
+    .header h1 { margin: 0; color: #ffffff; font-size: 26px; text-transform: uppercase; letter-spacing: 2px; text-shadow: 2px 2px 4px rgba(0,0,0,0.6); }
+    .header p { margin: 8px 0 0; color: #fef08a; font-size: 14px; font-weight: bold; }
+    .content { padding: 30px 25px; line-height: 1.6; }
+    .greeting { font-size: 18px; color: #fef08a; font-weight: bold; margin-bottom: 15px; }
+    .blessing-card { background: #0f172a; border-left: 4px solid #eab308; padding: 20px; border-radius: 8px; margin: 20px 0; font-style: italic; font-size: 16px; color: #e2e8f0; }
+    .blessing-author { margin-top: 10px; font-style: normal; font-weight: bold; color: #facc15; text-align: right; }
+    .joke-card { background: #334155; border: 1px dashed #eab308; padding: 20px; border-radius: 12px; margin: 25px 0; text-align: center; }
+    .joke-tag { display: inline-block; background: #eab308; color: #000; font-size: 11px; font-weight: 800; text-transform: uppercase; padding: 4px 10px; border-radius: 20px; margin-bottom: 12px; }
+    .joke-text { font-size: 18px; font-weight: 600; color: #ffffff; margin: 0 0 10px; }
+    .movie-note { font-size: 13px; color: #94a3b8; }
+    .action-btn { display: inline-block; background: #eab308; color: #0f172a; font-weight: bold; text-decoration: none; padding: 12px 25px; border-radius: 8px; text-transform: uppercase; font-size: 14px; letter-spacing: 1px; }
+    .footer { text-align: center; padding: 20px; font-size: 12px; color: #64748b; border-top: 1px solid #334155; }
+    .footer a { color: #94a3b8; text-decoration: underline; }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="header">
+      <h1>CHUCK NORRIS APPROVES</h1>
+      <p>Official Daily Roundhouse of Wisdom & Blessing</p>
+    </div>
+
+    <div class="content">
+      <div class="greeting">Hello, <%= @subscriber.display_name %>!</div>
+      <p>You have made the wisest choice of your life: subscribing to the daily blessings of Chuck Norris.</p>
+      
+      <p style="color: #cbd5e1;">Here is your personal blessing and wish for a phenomenal day straight from the legend:</p>
+
+      <div class="blessing-card">
+        "<%= @blessing %>"
+        <div class="blessing-author">— Chuck Norris</div>
+      </div>
+
+      <% if @joke %>
+        <div class="joke-card">
+          <div class="joke-tag">🔥 Joke of the Day</div>
+          <div class="joke-text">"<%= @joke.content %>"</div>
+          <% if @joke.movie_title.present? %>
+            <div class="movie-note">🎬 As seen in legendary lore: <strong><%= @joke.movie_title %></strong></div>
+          <% end %>
+        </div>
+      <% end %>
+
+      <div style="text-align: center; margin: 30px 0 10px;">
+        <a href="<%= root_url %>" class="action-btn">Visit Chuck's Meme Gallery</a>
+      </div>
+
+      <p style="font-size: 14px; color: #94a3b8; text-align: center;">
+        Go forth with confidence. Today is yours. If anything challenges you, remind it who sent you this email.
+      </p>
+    </div>
+
+    <div class="footer">
+      <p>Delivered with 100% roundhouse precision.</p>
+      <p>Don't want these blessings anymore? <a href="<%= @unsubscribe_url %>">Unsubscribe (at your own peril)</a></p>
+    </div>
+  </div>
+</body>
+</html>

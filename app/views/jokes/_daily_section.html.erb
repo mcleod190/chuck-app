@@ -1,0 +1,120 @@
+<!-- Daily Joke & Personal Blessing Widget -->
+<section id="daily-joke" class="py-14 border-b border-slate-800 bg-slate-950/60">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 items-stretch">
+      
+      <!-- Card 1: Official Joke of the Day -->
+      <div class="bg-slate-900 border border-amber-500/40 rounded-3xl p-6 flex flex-col justify-between shadow-2xl">
+        <div>
+          <div class="flex items-center justify-between gap-4 mb-3">
+            <span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-amber-500 text-slate-950 text-xs font-black uppercase">
+              <i class="fa-solid fa-calendar-day"></i> Joke of the Day
+            </span>
+            <span class="text-xs font-bold text-slate-400">
+              <%= Date.current.strftime("%B %d, %Y") %>
+            </span>
+          </div>
+
+          <div class="aspect-video w-full rounded-2xl overflow-hidden bg-slate-950 border border-slate-800 mb-4">
+            <%= scene_image_tag @joke_of_the_day, class: "w-full h-full object-cover" %>
+          </div>
+
+          <div class="text-xs font-bold text-amber-400 uppercase tracking-wider mb-1">
+            🎬 <%= @joke_of_the_day.movie_title %>
+            <% if @joke_of_the_day.character_name.present? %>
+              <span class="text-slate-500">• <%= @joke_of_the_day.character_name %></span>
+            <% end %>
+          </div>
+
+          <blockquote class="text-xl sm:text-2xl font-black text-white leading-snug mb-2">
+            "<%= @joke_of_the_day.content %>"
+          </blockquote>
+
+          <p class="text-xs text-slate-400 italic border-l-2 border-slate-700 pl-3">
+            <%= @joke_of_the_day.scene_description %>
+          </p>
+        </div>
+
+        <div class="mt-6 pt-4 border-t border-slate-800 flex items-center justify-between">
+          <button type="button" 
+                  onclick="likeJoke(<%= @joke_of_the_day.id %>)" 
+                  class="flex items-center gap-2 px-4 py-2 rounded-xl bg-slate-800 hover:bg-amber-500/20 text-slate-200 border border-slate-700 text-xs font-bold transition-all">
+            <i class="fa-solid fa-hand-fist text-amber-500"></i>
+            <span>Upvote</span>
+            <span class="font-mono text-amber-400" id="likes-count-<%= @joke_of_the_day.id %>">
+              <%= @joke_of_the_day.likes_count %>
+            </span>
+          </button>
+
+          <a href="#subscribe" class="text-xs font-bold text-amber-400 hover:text-amber-300 flex items-center gap-1">
+            <span>Get daily email</span>
+            <i class="fa-solid fa-arrow-right"></i>
+          </a>
+        </div>
+      </div>
+
+      <!-- Card 2: Interactive Personal Blessing from Chuck -->
+      <div id="instant-blessing" class="bg-slate-900 border border-slate-800 rounded-3xl p-6 flex flex-col justify-between shadow-2xl">
+        <div>
+          <div class="flex items-center justify-between gap-4 mb-3">
+            <span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-red-600 text-white text-xs font-black uppercase">
+              <i class="fa-solid fa-hands-praying"></i> Personal Blessing
+            </span>
+            <span class="text-xs text-amber-400 font-bold uppercase">
+              From Chuck
+            </span>
+          </div>
+
+          <h2 class="font-bebas text-3xl tracking-wider text-white mb-1">
+            RECEIVE YOUR DAILY BLESSING
+          </h2>
+          <p class="text-xs text-slate-400 mb-4">
+            Enter your name, pick Chuck's tone, and receive an authentic personal blessing to conquer today.
+          </p>
+
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-3 mb-4">
+            <div>
+              <label class="block text-xs font-bold text-slate-300 uppercase mb-1">Your Name</label>
+              <input type="text" 
+                     id="blessing-name-input" 
+                     placeholder="e.g. Alex" 
+                     class="w-full bg-slate-950 border border-slate-700 rounded-xl px-3 py-2 text-sm text-white focus:outline-none focus:border-amber-500">
+            </div>
+            <div>
+              <label class="block text-xs font-bold text-slate-300 uppercase mb-1">Blessing Tone</label>
+              <select id="blessing-tone-select" 
+                      class="w-full bg-slate-950 border border-slate-700 rounded-xl px-3 py-2 text-sm text-white focus:outline-none focus:border-amber-500">
+                <% @tones.each do |tone| %>
+                  <option value="<%= tone %>"><%= tone %></option>
+                <% end %>
+              </select>
+            </div>
+          </div>
+
+          <div class="bg-slate-950 border-l-4 border-amber-500 p-4 rounded-r-2xl min-h-[100px] flex flex-col justify-between" id="blessing-box">
+            <p id="blessing-text" class="text-sm text-slate-200 italic leading-relaxed">
+              "<%= @random_blessing %>"
+            </p>
+            <div class="mt-2 text-right text-xs font-bold text-amber-400" id="blessing-signature">
+              — Chuck Norris
+            </div>
+          </div>
+        </div>
+
+        <div class="mt-5 pt-4 border-t border-slate-800 flex items-center justify-between">
+          <button type="button" 
+                  onclick="fetchPersonalBlessing()" 
+                  class="bg-gradient-to-r from-red-600 to-amber-600 hover:from-red-500 hover:to-amber-500 text-white px-4 py-2 rounded-xl font-bold uppercase text-xs shadow-lg transition-all flex items-center gap-2">
+            <i class="fa-solid fa-wand-magic-sparkles"></i>
+            <span>Bless Me, Chuck!</span>
+          </button>
+
+          <span class="text-[11px] text-slate-500">
+            100% Roundhouse Approved
+          </span>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>

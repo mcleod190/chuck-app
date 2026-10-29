@@ -1,0 +1,63 @@
+<div class="card-hover bg-slate-900/90 rounded-2xl border border-slate-800 hover:border-amber-500/50 overflow-hidden flex flex-col shadow-xl" id="joke-card-<%= joke.id %>">
+  <!-- Meme Scene Image -->
+  <div class="relative aspect-video w-full overflow-hidden bg-slate-950">
+    <%= scene_image_tag joke, class: "w-full h-full object-cover transition-transform duration-500 hover:scale-105" %>
+    <div class="absolute top-3 left-3 flex flex-wrap gap-2">
+      <span class="text-[10px] font-black uppercase tracking-wider px-2.5 py-1 rounded-full border <%= category_badge_color(joke.category) %> backdrop-blur-md">
+        <%= joke.category %>
+      </span>
+      <% if joke.featured? %>
+        <span class="text-[10px] font-black uppercase tracking-wider px-2.5 py-1 rounded-full bg-amber-500 text-slate-950 shadow-md flex items-center gap-1">
+          <i class="fa-solid fa-crown text-[9px]"></i> Hall of Fame
+        </span>
+      <% end %>
+    </div>
+  </div>
+
+  <!-- Content Box -->
+  <div class="p-5 sm:p-6 flex flex-col flex-grow justify-between">
+    <div>
+      <% if joke.movie_title.present? %>
+        <div class="flex items-center gap-2 text-xs font-bold text-amber-400 mb-2">
+          <i class="fa-solid fa-film"></i>
+          <span><%= joke.movie_title %></span>
+          <% if joke.character_name.present? %>
+            <span class="text-slate-500">• <%= joke.character_name %></span>
+          <% end %>
+        </div>
+      <% end %>
+
+      <blockquote class="text-lg font-bold text-white leading-snug mb-3">
+        "<%= joke.content %>"
+      </blockquote>
+
+      <% if joke.scene_description.present? %>
+        <p class="text-xs text-slate-400 italic mb-4 border-l-2 border-slate-700 pl-3">
+          <%= joke.scene_description %>
+        </p>
+      <% end %>
+    </div>
+
+    <!-- Actions: Like & Lore -->
+    <div class="pt-4 border-t border-slate-800/80 flex items-center justify-between">
+      <button type="button" 
+              onclick="likeJoke(<%= joke.id %>)" 
+              class="flex items-center gap-2 px-3 py-1.5 rounded-lg bg-slate-800 hover:bg-amber-500/20 text-slate-300 hover:text-amber-400 border border-slate-700 hover:border-amber-500/30 text-xs font-bold transition-all group"
+              id="like-btn-<%= joke.id %>">
+        <i class="fa-solid fa-hand-fist group-hover:scale-125 transition-transform text-amber-500"></i>
+        <span>Respect</span>
+        <span class="px-1.5 py-0.5 rounded bg-slate-900 text-amber-400 font-mono text-[11px]" id="likes-count-<%= joke.id %>">
+          <%= joke.likes_count %>
+        </span>
+      </button>
+
+      <button type="button"
+              onclick="copyJokeQuote('<%= j(joke.content) %>')"
+              class="text-xs text-slate-400 hover:text-slate-200 transition-colors flex items-center gap-1.5 py-1 px-2 rounded hover:bg-slate-800"
+              title="Copy joke to clipboard">
+        <i class="fa-regular fa-copy"></i>
+        <span>Copy</span>
+      </button>
+    </div>
+  </div>
+</div>

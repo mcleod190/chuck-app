@@ -1,0 +1,20 @@
+one:
+  content: "Chuck Norris once kicked a horse in the chin. Its descendants are known as giraffes."
+  movie_title: "Walker, Texas Ranger"
+  character_name: "Cordell Walker"
+  scene_description: "Walker pauses and roundhouse kicks bad guys."
+  image_url: "walker_kick.svg"
+  category: "Texas Ranger Grit"
+  likes_count: 50
+  featured: true
+
+two:
+  content: "Chuck Norris can hear sign language."
+  movie_title: "Lone Wolf McQuade"
+  character_name: "J.J. McQuade"
+  scene_description: "McQuade drives his truck."
+  image_url: "lone_wolf_truck.svg"
+  category: "General Badassery"
+  likes_count: 25
+  featured: false
+

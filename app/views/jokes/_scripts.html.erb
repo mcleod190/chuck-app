@@ -1,0 +1,112 @@
+<!-- Toast notification popup -->
+<div id="toast" class="fixed bottom-6 right-6 z-50 transform translate-y-20 opacity-0 transition-all duration-300 bg-slate-900 border border-amber-500 text-amber-300 px-4 py-2.5 rounded-xl text-xs font-bold shadow-2xl flex items-center gap-2">
+  <i class="fa-solid fa-circle-check text-amber-400"></i>
+  <span id="toast-message">Copied!</span>
+</div>
+
+<script>
+  let currentRandomId = <%= @joke_of_the_day.id %>;
+
+  function showToast(message) {
+    const toast = document.getElementById('toast');
+    const msgEl = document.getElementById('toast-message');
+    msgEl.innerText = message;
+    toast.classList.remove('translate-y-20', 'opacity-0');
+    setTimeout(() => {
+      toast.classList.add('translate-y-20', 'opacity-0');
+    }, 2400);
+  }
+
+  function copyJokeQuote(text) {
+    if (navigator.clipboard) {
+      navigator.clipboard.writeText(text).then(() => {
+        showToast("💥 Chuck Norris joke copied!");
+      });
+    }
+  }
+
+  async function likeJoke(id) {
+    try {
+      const csrfToken = document.querySelector('meta[name="csrf-token"]')?.getAttribute('content');
+      const response = await fetch(`/jokes/${id}/like`, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          'Accept': 'application/json',
+          'X-CSRF-Token': csrfToken
+        }
+      });
+      if (response.ok) {
+        const data = await response.json();
+        const el = document.getElementById(`likes-count-${id}`);
+        if (el) el.innerText = data.likes_count;
+        if (currentRandomId === id) {
+          const randEl = document.getElementById('random-likes-count');
+          if (randEl) randEl.innerText = data.likes_count;
+        }
+        showToast("🥋 Respect recorded for Chuck!");
+      }
+    } catch (e) {
+      console.error(e);
+    }
+  }
+
+  async function spinRandomJoke() {
+    const spinIcon = document.getElementById('spin-icon');
+    spinIcon.classList.add('fa-spin');
+    
+    try {
+      const response = await fetch(`/jokes/random?exclude_id=${currentRandomId}`, {
+        headers: { 'Accept': 'application/json' }
+      });
+      if (response.ok) {
+        const data = await response.json();
+        currentRandomId = data.id;
+
+        const card = document.getElementById('random-card-wrapper');
+        card.style.opacity = '0.7';
+
+        setTimeout(() => {
+          document.getElementById('random-content').innerText = `"${data.content}"`;
+          document.getElementById('random-movie').innerText = `🎬 ${data.movie_title || 'Chuck Norris Legend'}`;
+          document.getElementById('random-category').innerText = data.category;
+          document.getElementById('random-scene').innerText = data.scene_description || '';
+          document.getElementById('random-likes-count').innerText = data.likes_count;
+          if (data.image_url) {
+            document.getElementById('random-img').src = data.image_url;
+            document.getElementById('random-img').alt = data.movie_title || 'Chuck Norris';
+          }
+          card.style.opacity = '1';
+        }, 150);
+      }
+    } catch (err) {
+      console.error(err);
+    } finally {
+      setTimeout(() => spinIcon.classList.remove('fa-spin'), 300);
+    }
+  }
+
+  async function fetchPersonalBlessing() {
+    const nameInput = document.getElementById('blessing-name-input');
+    const toneSelect = document.getElementById('blessing-tone-select');
+    const name = nameInput.value.trim() || 'Warrior';
+    const tone = toneSelect.value;
+
+    const blessingBox = document.getElementById('blessing-box');
+    blessingBox.style.opacity = '0.5';
+
+    try {
+      const response = await fetch(`/jokes/bless_me?name=${encodeURIComponent(name)}&tone=${encodeURIComponent(tone)}`);
+      if (response.ok) {
+        const data = await response.json();
+        document.getElementById('blessing-text').innerText = `"${data.blessing}"`;
+        document.getElementById('blessing-signature').innerText = `— Chuck Norris (${data.tone} Blessing)`;
+        showToast(`⚡ Chuck has blessed ${name}!`);
+      }
+    } catch (e) {
+      console.error(e);
+    } finally {
+      blessingBox.style.opacity = '1';
+    }
+  }
+</script>
