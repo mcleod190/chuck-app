@@ -25,9 +25,6 @@ gem "stimulus-rails"
 # Build JSON APIs with ease [https://github.com/rails/jbuilder]
 gem "jbuilder"
 
-# Reduces boot times through caching; required in config/boot.rb
-gem "bootsnap", require: false
-
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
 gem "tzinfo-data", platforms: %i[ mswin mswin64 mingw x64_mingw jruby ]
 
@@ -46,6 +43,9 @@ end
 group :development do
   # Use console on exceptions pages [https://github.com/rails/web-console]
   gem "web-console"
+  # Reduces boot times through caching; optional in production
+  gem "bootsnap", require: false
 end
+
 
 
